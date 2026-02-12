@@ -91,32 +91,32 @@ interface TestimonialProps {
 
 const TestimonialCard = ({ name, designation, testimonial }: TestimonialProps) => (
   <div className="mx-6 w-[400px] group">
-    <div className="relative h-full bg-card/60 backdrop-blur-md border border-border/50 p-8 rounded-[2rem] transition-all hover:bg-card hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5">
-      <div className="absolute top-6 right-8 text-primary/10 group-hover:text-primary/20 transition-colors">
-        <Quote size={40} className="fill-current" />
+    <div className="relative h-full bg-white/60 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/5 p-8 rounded-[2.5rem] transition-all duration-500 hover:bg-white dark:hover:bg-black hover:border-primary/30 dark:hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/10">
+      <div className="absolute top-8 right-10 text-primary/10 group-hover:text-primary/20 transition-colors duration-500">
+        <Quote size={48} className="fill-current" />
       </div>
 
-      <div className="flex items-center gap-4 mb-6">
-        <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
-          <User size={24} />
+      <div className="flex items-center gap-5 mb-8">
+        <div className="h-14 w-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-lg shadow-primary/5">
+          <User size={28} />
         </div>
         <div>
-          <p className="font-bold text-lg leading-none mb-1 group-hover:text-primary transition-colors">
+          <p className="font-bold text-xl leading-none mb-2 group-hover:text-primary transition-colors duration-300">
             {name}
           </p>
-          <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider">
+          <p className="text-xs text-muted-foreground font-bold uppercase tracking-[0.2em]">
             {designation}
           </p>
         </div>
       </div>
 
-      <p className="text-muted-foreground leading-relaxed italic">
+      <p className="text-muted-foreground text-lg leading-relaxed italic relative z-10">
         &quot;{testimonial}&quot;
       </p>
 
-      <div className="mt-8 flex gap-1">
+      <div className="mt-10 flex gap-1.5">
         {[1, 2, 3, 4, 5].map((s) => (
-          <svg key={s} className="w-4 h-4 text-yellow-500 fill-current" viewBox="0 0 20 20">
+          <svg key={s} className="w-4 h-4 text-yellow-500 fill-current drop-shadow-[0_0_8px_rgba(234,179,8,0.3)]" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
         ))}
