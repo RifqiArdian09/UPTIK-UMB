@@ -25,11 +25,11 @@ export const NavigationSheet = () => {
 
         <div className="flex flex-col gap-10 mt-10">
           <div className="flex flex-col gap-6">
-            <Link href="/" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"> <Home className="h-5 w-5" />Beranda</Link>
-            <Link href="#tentang" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><User className="h-5 w-5" />Tentang Kami</Link>
-            <Link href="#layanan" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><Briefcase className="h-5 w-5" />Layanan</Link>
-            <Link href="#testimonials" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><Users className="h-5 w-5" />Testimoni</Link>
-            <Link href="#footer" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><Phone className="h-5 w-5" />Kontak</Link>
+            <Link href="/#beranda" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"> <Home className="h-5 w-5" />Beranda</Link>
+            <Link href="/#tentang" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><User className="h-5 w-5" />Tentang Kami</Link>
+            <Link href="/#layanan" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><Briefcase className="h-5 w-5" />Layanan</Link>
+            <Link href="/#testimonials" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><Users className="h-5 w-5" />Testimoni</Link>
+            <Link href="/#footer" className="flex items-center gap-3 text-lg font-medium hover:text-primary transition-colors"><Phone className="h-5 w-5" />Kontak</Link>
           </div>
 
         </div>

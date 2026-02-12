@@ -49,7 +49,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
 
       <NavigationMenuItem>
         <NavigationMenuLink asChild>
-          <Link href="#footer" className="flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest hover:text-primary transition-colors">
+          <Link href="/#footer" className="flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest hover:text-primary transition-colors">
             <Phone className="h-3.5 w-3.5" />
             Kontak
           </Link>
