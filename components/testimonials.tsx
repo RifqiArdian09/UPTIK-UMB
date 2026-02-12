@@ -1,9 +1,8 @@
 "use client";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Marquee from "@/components/ui/marquee";
 import { motion } from "motion/react";
-import { Quote } from "lucide-react";
+import { Quote, User } from "lucide-react";
 
 const testimonials = [
   {
@@ -13,7 +12,6 @@ const testimonials = [
     company: "PT. Teknologi Indonesia",
     testimonial:
       "Infrastruktur jaringan yang disediakan UPT TIK sangat stabil dan reliable. Kami tidak lagi khawatir tentang gangguan koneksi saat melakukan kegiatan penting. Keamanan data kami pun terjamin!",
-    avatar: "https://randomuser.me/api/portraits/men/1.jpg",
   },
   {
     id: 2,
@@ -22,7 +20,6 @@ const testimonials = [
     company: "Universitas Muhammadiyah Bengkulu",
     testimonial:
       "UPT TIK selalu responsif terhadap kebutuhan kami, terutama dalam adaptasi teknologi baru. Tim dukungan teknisnya sangat cepat dan kompeten dalam menyelesaikan masalah. Pelayanan terbaik!",
-    avatar: "https://randomuser.me/api/portraits/men/8.jpg",
   },
   {
     id: 3,
@@ -31,7 +28,6 @@ const testimonials = [
     company: "Universitas Muhammadiyah Bengkulu",
     testimonial:
       "Layanan Analisis Big Data UPT TIK telah membantu kami mendapatkan wawasan akurat untuk pengambilan keputusan strategis kampus. Kinerja sistem informasi akademik pun kini jauh lebih efisien.",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
   },
   {
     id: 4,
@@ -40,7 +36,6 @@ const testimonials = [
     company: "Universitas Muhammadiyah Bengkulu",
     testimonial:
       "Komitmen UPT TIK terhadap keandalan dan inovasi teknologi benar-benar terbukti. Sistem yang mereka bangun sangat mendukung transformasi digital di lingkungan kampus kami.",
-    avatar: "https://randomuser.me/api/portraits/men/5.jpg",
   },
   {
     id: 5,
@@ -49,7 +44,6 @@ const testimonials = [
     company: "Universitas Muhammadiyah Bengkulu",
     testimonial:
       "Komitmen UPT TIK terhadap keandalan dan inovasi teknologi benar-benar terbukti. Sistem yang mereka bangun sangat mendukung transformasi digital di lingkungan kampus kami.",
-    avatar: "https://randomuser.me/api/portraits/men/4.jpg",
   },
 ];
 
@@ -93,10 +87,9 @@ interface TestimonialProps {
   name: string;
   designation: string;
   testimonial: string;
-  avatar: string;
 }
 
-const TestimonialCard = ({ name, designation, testimonial, avatar }: TestimonialProps) => (
+const TestimonialCard = ({ name, designation, testimonial }: TestimonialProps) => (
   <div className="mx-6 w-[400px] group">
     <div className="relative h-full bg-card/60 backdrop-blur-md border border-border/50 p-8 rounded-[2rem] transition-all hover:bg-card hover:border-primary/20 hover:shadow-2xl hover:shadow-primary/5">
       <div className="absolute top-6 right-8 text-primary/10 group-hover:text-primary/20 transition-colors">
@@ -104,12 +97,9 @@ const TestimonialCard = ({ name, designation, testimonial, avatar }: Testimonial
       </div>
 
       <div className="flex items-center gap-4 mb-6">
-        <Avatar className="h-14 w-14 border-2 border-primary/20 p-0.5">
-          <AvatarImage src={avatar} className="rounded-full object-cover" />
-          <AvatarFallback className="bg-primary text-primary-foreground font-bold">
-            {name.charAt(0)}
-          </AvatarFallback>
-        </Avatar>
+        <div className="h-12 w-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500">
+          <User size={24} />
+        </div>
         <div>
           <p className="font-bold text-lg leading-none mb-1 group-hover:text-primary transition-colors">
             {name}
