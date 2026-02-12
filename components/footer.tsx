@@ -31,7 +31,7 @@ const footerLinks: { title: string; links: FooterLink[] }[] = [
       { name: "SIAKAD", href: "https://siakad.umb.ac.id/umb/" },
       { name: "SIMARU", href: "https://simaru.umb.ac.id/" },
       { name: "SIKAMU", href: "https://sikamu.umb.ac.id/" },
-      { name: "SISENJA", href: "https://sisenja.umb.ac.id/" },
+      { name: "SISENJA", href: "https://presensi.umb.ac.id/login" },
       { name: "SIKAWAN", href: "https://sikawan.umb.ac.id/" },
     ],
   },

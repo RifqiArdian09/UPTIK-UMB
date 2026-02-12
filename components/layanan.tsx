@@ -5,6 +5,7 @@ import {
   HardDrive,
   Server,
   Globe,
+  Headset,
 } from "lucide-react";
 import { motion, Variants } from "motion/react";
 import Image from "next/image";
@@ -16,7 +17,7 @@ const layanan = [
     description:
       "Pengelolaan dan pengembangan infrastruktur jaringan kampus untuk memastikan konektivitas stabil, cepat, dan aman di seluruh lingkungan Universitas Muhammadiyah Bengkulu.",
     icon: Cable,
-    image: "/Infrastruktur & Jaringan.jpeg",
+    image: "/layanan1.jpeg",
   },
   {
     title: "Servis & Maintenance Perangkat",
@@ -24,14 +25,15 @@ const layanan = [
     description:
       "Penanganan perangkat keras (hardware) and perangkat lunak (software) dilakukan secara teliti dan profesional untuk menjaga performa optimal perangkat kerja civitas akademika.",
     icon: HardDrive,
-    image: "/Servis & Maintenance Perangkat.png",
+    image: "/layanan2.png",
   },
   {
     title: "Dukungan Teknis & IT Support",
     subtitle: "Siap Siaga Menghadapi Tantangan Teknologi",
     description:
       "Tim UPTTIK UMB selalu siap memberikan dukungan teknis, troubleshooting, serta solusi atas berbagai kendala teknologi informasi secara cepat dan tepat.",
-    image: "/Manjat.jpeg",
+    icon: Headset,
+    image: "/layanan3.jpeg",
   },
   {
     title: "Konfigurasi Server & Data Center",
@@ -39,7 +41,7 @@ const layanan = [
     description:
       "Instalasi, konfigurasi, dan monitoring server maupun perangkat jaringan di data center/rack guna menjamin keamanan dan stabilitas sistem informasi kampus.",
     icon: Server,
-    image: "/Konfigurasi Server & Data Center.jpeg",
+    image: "/layanan4.jpeg",
   },
   {
     title: "Pengembangan Website & Sistem Informasi",
@@ -47,7 +49,7 @@ const layanan = [
     description:
       "Pengembangan website resmi, sistem informasi akademik, serta aplikasi berbasis web sesuai kebutuhan fakultas, program studi, dan unit kerja di lingkungan UMB.",
     icon: Globe,
-    image: "/ngoding.jpeg",
+    image: "/layanan5.jpeg",
   },
 ];
 
@@ -80,10 +82,7 @@ const Layanan = () => {
       id="layanan"
       className="relative flex flex-col items-center justify-center py-24 xs:py-32 px-6 overflow-hidden bg-muted/30"
     >
-      {/* Decorative background blur */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px] pointer-events-none" />
-
+      
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         <div className="flex flex-col items-center mb-20">
           <motion.div
@@ -143,6 +142,11 @@ const Layanan = () => {
 
                 {/* Text Content Overlay */}
                 <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                  {item.icon && (
+                    <div className="mb-3">
+                      <item.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                    </div>
+                  )}
                   <h3 className="text-lg md:text-xl font-bold text-white leading-tight mb-2">
                     {item.title}
                   </h3>
@@ -185,6 +189,11 @@ const Layanan = () => {
 
                 {/* Text Content Overlay */}
                 <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                  {item.icon && (
+                    <div className="mb-3">
+                      <item.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                    </div>
+                  )}
                   <h3 className="text-lg md:text-xl font-bold text-white leading-tight mb-2">
                     {item.title}
                   </h3>

@@ -14,11 +14,10 @@ const ProfilePage = () => {
             <Navbar />
             <main className="pt-16 pb-20">
                 {/* Hero Section Profil */}
-                {/* Hero Section Profil */}
                 <section className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 z-0">
                         <Image
-                            src="/tim upt tik.jpeg"
+                            src="/team.jpeg"
                             alt="UMB Background"
                             fill
                             className="object-cover"
@@ -77,7 +76,7 @@ const ProfilePage = () => {
                                 viewport={{ once: true }}
                                 className="relative rounded-[2.5rem] overflow-hidden border-8 border-background shadow-2xl skew-y-3"
                             >
-                                <Image src="/duo.png" alt="Tentang UPTTIK" width={800} height={450} className="w-full h-full object-cover aspect-video" />
+                                <Image src="/visi.png" alt="Tentang UPTTIK" width={800} height={450} className="w-full h-full object-cover aspect-video" />
                                 <div className="absolute inset-0 bg-primary/10" />
                             </motion.div>
                         </div>
@@ -123,7 +122,7 @@ const ProfilePage = () => {
                                     <Image
                                         alt="Layanan Profesional"
                                         className="relative rounded-xl shadow-2xl w-full h-[400px] object-cover"
-                                        src="/bg aldi.jpeg"
+                                        src="/tentanghome.jpeg"
                                         width={800}
                                         height={400}
                                     />
@@ -148,7 +147,7 @@ const ProfilePage = () => {
                                     <Image
                                         alt="Kemandirian Institusi"
                                         className="relative rounded-xl shadow-2xl w-full h-[400px] object-cover"
-                                        src="/duo2.jpeg"
+                                        src="/misi2.jpeg"
                                         width={800}
                                         height={400}
                                     />
@@ -173,7 +172,7 @@ const ProfilePage = () => {
                                     <Image
                                         alt="Nilai Keislaman"
                                         className="relative rounded-xl shadow-2xl w-full h-[400px] object-cover"
-                                        src="/grub.png"
+                                        src="/misi3.png"
                                         width={800}
                                         height={400}
                                     />

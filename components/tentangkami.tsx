@@ -24,7 +24,7 @@ const Tentangkami = () => {
           >
             <div className="relative z-10 rounded-[3rem] overflow-hidden border-8 border-background shadow-2xl">
               <Image
-                src="/bg aldi.jpeg"
+                src="/tentanghome.jpeg"
                 alt="Tentang Kami UPTTIK"
                 width={800}
                 height={800}

@@ -15,7 +15,7 @@ const Hero = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/tim upt tik.jpeg"
+          src="/team.jpeg"
           alt="UMB Background"
           fill
           className="object-cover object-top md:object-center"
