@@ -1,43 +1,92 @@
+"use client";
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowUpRight, CirclePlay } from "lucide-react";
+import { ArrowUpRight, Phone } from "lucide-react";
 import React from "react";
-import LogoCloud from "./logo-cloud";
+import { motion } from "motion/react";
+
+import Link from "next/link";
+import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="min-h-[calc(100vh-6rem)] flex flex-col items-center py-20 px-6">
-      <div className="md:mt-6 flex items-center justify-center">
-        <div className="text-center max-w-2xl">
-          <Badge className="bg-primary rounded-full py-1 border-none">
-            v1.0.0 is available now! 🚀
-          </Badge>
-          <h1 className="mt-6 max-w-[20ch] text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.2]! tracking-tight">
-            Customized Shadcn UI Blocks & Components
-          </h1>
-          <p className="mt-6 max-w-[60ch] xs:text-lg">
-            Explore a collection of Shadcn UI blocks and components, ready to
-            preview and copy. Streamline your development workflow with
-            easy-to-implement examples.
-          </p>
-          <div className="mt-12 flex flex-col sm:flex-row items-center sm:justify-center gap-4">
+    <div id="beranda" className="relative min-h-[80vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden pt-24 sm:pt-16 py-20 px-6 bg-background">
+      {/* Background Image with Overlay */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/tim upt tik.jpeg"
+          alt="UMB Background"
+          fill
+          className="object-cover object-top md:object-center"
+          priority
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        {/* Gradient Fade at Bottom */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 md:h-32 bg-gradient-to-t from-background to-transparent" />
+      </div>
+
+      <div className="relative z-10 md:mt-6 flex items-center justify-center">
+        <div className="text-center max-w-4xl">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Badge variant="outline" className="rounded-full px-4 py-1.5 border-white/20 bg-white/10 text-white backdrop-blur-sm">
+              Infrastruktur • Sistem Informasi • IT Support
+            </Badge>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="mt-8 text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg"
+          >
+            UPTTIK UNIVERSITAS <br />
+            <span className="italic">MUHAMMADIYAH BENGKULU</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mt-8 max-w-[65ch] mx-auto text-lg md:text-xl text-white/90 leading-relaxed drop-shadow-md"
+          >
+            Unit Pelaksana Teknis Teknologi Informasi dan Komunikasi yang mendukung pengelolaan sistem informasi, infrastruktur jaringan, serta layanan teknologi di lingkungan Universitas Muhammadiyah Bengkulu.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 flex flex-col sm:flex-row items-center sm:justify-center gap-4"
+          >
             <Button
-              size="lg"
-              className="w-full sm:w-auto rounded-full text-base"
+              size="xl"
+              className="w-full sm:w-auto rounded-full text-base font-semibold group"
+              asChild
             >
-              Get Started <ArrowUpRight className="h-5! w-5!" />
+              <Link href="#tentang">
+                Get Started
+                <ArrowUpRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </Link>
             </Button>
             <Button
+              size="xl"
               variant="outline"
-              size="lg"
-              className="w-full sm:w-auto rounded-full text-base shadow-none"
+              className="w-full sm:w-auto rounded-full text-base font-semibold group"
+              asChild
             >
-              <CirclePlay className="h-5! w-5!" /> Watch Demo
+              <Link href="#footer">
+                Hubungi Kami
+                <Phone className="ml-2 h-5 w-5 transition-transform group-hover:scale-110" />
+              </Link>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </div>
-      <LogoCloud className="mt-24 max-w-3xl mx-auto" />
     </div>
   );
 };

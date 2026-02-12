@@ -7,6 +7,7 @@ import {
   useId,
   useRef,
   useState,
+  useCallback,
 } from "react";
 
 import { cn } from "@/lib/utils";
@@ -38,43 +39,47 @@ export function AnimatedGridPattern({
   const id = useId();
   const containerRef = useRef(null);
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
-  const [squares, setSquares] = useState(() => generateSquares(numSquares));
-
-  function getPos() {
+  const getPos = useCallback(() => {
     return [
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
     ];
-  }
+  }, [dimensions.width, dimensions.height, width, height]);
 
-  // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
-    return Array.from({ length: count }, (_, i) => ({
-      id: i,
-      pos: getPos(),
-    }));
-  }
+  const generateSquares = useCallback(
+    (count: number) => {
+      return Array.from({ length: count }, (_, i) => ({
+        id: i,
+        pos: getPos(),
+      }));
+    },
+    [getPos]
+  );
 
-  // Function to update a single square's position
-  const updateSquarePosition = (id: number) => {
-    setSquares((currentSquares) =>
-      currentSquares.map((sq) =>
-        sq.id === id
-          ? {
+  const updateSquarePosition = useCallback(
+    (id: number) => {
+      setSquares((currentSquares) =>
+        currentSquares.map((sq) =>
+          sq.id === id
+            ? {
               ...sq,
               pos: getPos(),
             }
-          : sq
-      )
-    );
-  };
+            : sq
+        )
+      );
+    },
+    [getPos]
+  );
+
+  const [squares, setSquares] = useState<{ id: number; pos: number[] }[]>([]);
 
   // Update squares to animate in
   useEffect(() => {
     if (dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares));
     }
-  }, [dimensions, numSquares]);
+  }, [dimensions.width, dimensions.height, numSquares, generateSquares]);
 
   // Resize observer to update container dimensions
   useEffect(() => {
@@ -87,13 +92,14 @@ export function AnimatedGridPattern({
       }
     });
 
-    if (containerRef.current) {
-      resizeObserver.observe(containerRef.current);
+    const node = containerRef.current;
+    if (node) {
+      resizeObserver.observe(node);
     }
 
     return () => {
-      if (containerRef.current) {
-        resizeObserver.unobserve(containerRef.current);
+      if (node) {
+        resizeObserver.unobserve(node);
       }
     };
   }, [containerRef]);

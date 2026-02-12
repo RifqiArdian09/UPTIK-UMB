@@ -38,6 +38,7 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  --font-geist: var(--font-geist-sans);
 
   --radius-lg: var(--radius);
   --radius-md: calc(var(--radius) - 2px);
@@ -52,14 +53,17 @@
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(calc(-100% - var(--gap)));
     }
   }
+
   @keyframes marquee-vertical {
     from {
       transform: translateY(0);
     }
+
     to {
       transform: translateY(calc(-100% - var(--gap)));
     }
@@ -75,6 +79,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -195,12 +200,15 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   html {
-    @apply scroll-smooth scroll-pt-12;
+    @apply scroll-smooth scroll-pt-16;
   }
+
   body {
-    @apply text-foreground;
+    @apply bg-background text-foreground;
   }
+
   button {
     @apply cursor-pointer;
   }
