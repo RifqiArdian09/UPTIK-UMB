@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
-import { Target, Landmark } from "lucide-react";
+import { Target, Landmark, UserCircle } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -223,7 +223,7 @@ const ProfilePage = () => {
                             </motion.div>
 
                             {/* Vertical Line */}
-                            <div className="w-1 h-12 md:h-16 bg-border" />
+                            <div className="w-1 h-12 md:h-16 bg-linear-to-b from-primary to-border" />
 
                             {/* Horizontal Line Container */}
                             <div className="relative w-full max-w-5xl px-4">
@@ -311,7 +311,7 @@ const ProfilePage = () => {
 
 const OrgCard = ({ name, role, isStaff }: { name: string, role: string, isStaff?: boolean }) => (
     <div className={cn(
-        "bg-muted/60 dark:bg-muted/30 rounded-xl md:rounded-[2rem] shadow-lg md:shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-transparent w-full md:min-w-[220px]",
+        "bg-muted/60 dark:bg-black rounded-xl md:rounded-[2rem] shadow-lg md:shadow-xl transition-all duration-300 hover:shadow-2xl hover:scale-105 border border-transparent dark:border-white/5 w-full md:min-w-[220px]",
         isStaff ? "px-2 py-2 md:px-6 md:py-4" : "px-3 py-3 md:px-8 md:py-6"
     )}>
         <div className="flex items-center gap-4">

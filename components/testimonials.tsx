@@ -36,7 +36,7 @@ const testimonials = [
   {
     id: 4,
     name: "Ariel",
-    designation: "Dosen",
+    designation: "Mahasiswa",
     company: "Universitas Muhammadiyah Bengkulu",
     testimonial:
       "Komitmen UPT TIK terhadap keandalan dan inovasi teknologi benar-benar terbukti. Sistem yang mereka bangun sangat mendukung transformasi digital di lingkungan kampus kami.",
@@ -45,8 +45,8 @@ const testimonials = [
   {
     id: 5,
     name: "Rafy",
-    designation: "Siswa",
-    company: "SMA Muhammadiyah 1 Bengkulu",
+    designation: "Mahasiswa",
+    company: "Universitas Muhammadiyah Bengkulu",
     testimonial:
       "Komitmen UPT TIK terhadap keandalan dan inovasi teknologi benar-benar terbukti. Sistem yang mereka bangun sangat mendukung transformasi digital di lingkungan kampus kami.",
     avatar: "https://randomuser.me/api/portraits/men/4.jpg",
