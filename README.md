@@ -64,10 +64,3 @@ Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
 -   `npm run start`: Menjalankan server aplikasi yang sudah di-build.
 -   `npm run lint`: Menjalankan pengecekan ESLint untuk menjaga kualitas kode.
 
-## 🤝 Kontribusi
-
-Kontribusi selalu diterima! Jika Anda ingin meningkatkan proyek ini, silakan buat pull request atau hubungi tim pengembang UPTTIK.
-
----
-
-© 2026 **UPTTIK Universitas Muhammadiyah Bengkulu**. Seluruh hak cipta dilindungi undang-undang.
