@@ -65,3 +65,4 @@ This project is a base template for a landing page. It is built with Next.js, Ta
 
 If you have any suggestions or improvements, please create an issue or submit a pull request.
 # UPTTIK-UM-BENGKULU
+# UPTTIK-UM-BENGKULU
