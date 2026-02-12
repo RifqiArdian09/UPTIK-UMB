@@ -1,68 +1,73 @@
-# PureLanding - Beautiful Shadcn UI Landing Page
+# UPTTIK UMB - official Landing Page
 
-A modern, responsive landing page template built with Next.js, Tailwind CSS, and Shadcn UI, and Shadcn UI Blocks.
+![Next.js](https://img.shields.io/badge/Next.js-15.1.7-black?style=for-the-badge&logo=next.js)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4.0-38B2AC?style=for-the-badge&logo=tailwind-css)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-12.0-ff69b4?style=for-the-badge&logo=framer)
 
-## Demo
+Website resmi Unit Pelaksana Teknis Teknologi Informasi dan Komunikasi (UPTTIK) Universitas Muhammadiyah Bengkulu. Proyek ini dibangun menggunakan teknologi web modern untuk memberikan pengalaman pengguna yang cepat, responsif, dan premium.
 
-[Live Demo](https://pure-landing-shadcnui-template.vercel.app/)
+## ✨ Fitur Utama
 
-## Preview
+-   **Desain Modern & Premium**: Menggunakan estetika desain kontemporer dengan tipografi yang tajam dan palet warna yang harmonis.
+-   **Animasi Interaktif**: Didorong oleh `motion/react` (Framer Motion) untuk transisi yang mulus dan efek hover yang dinamis.
+-   **Struktur Organisasi Visual**: Representasi bagan organisasi yang interaktif dan responsif.
+-   **Optimasi Gambar**: Menggunakan `next/image` untuk performa LCP yang superior.
+-   **Dark Mode**: Dukungan penuh untuk tema gelap dan terang menggunakan `next-themes`.
+-   **Integrasi WhatsApp**: Fitur dukungan langsung yang terhubung ke tim IT Support.
+-   **SEO Friendly**: Struktur HTML semantik untuk indeksasi mesin pencari yang lebih baik.
 
-![Preview](./public/preview.png)
+## 🚀 Teknologi yang Digunakan
 
-## Features
+-   **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+-   **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+-   **Bahasa**: [TypeScript](https://www.typescriptlang.org/)
+-   **Animasi**: [Framer Motion (Motion/React)](https://www.framer.com/motion/)
+-   **Komponen UI**: [Shadcn UI](https://ui.shadcn.com/)
+-   **Icon**: [Lucide React](https://lucide.dev/)
 
-- 🎨 Modern and clean design
-- 📱 Fully responsive layout
-- 🎯 Built with Next.js 15
-- 💅 Styled with Tailwind CSS `3.4` & `4.0`
-- 🧩 Built with [Shadcn UI](https://ui.shadcn.com) and [Shadcn UI Blocks](https://shadcnui-blocks.com)
-- 🌙 Dark mode support
+## 🛠️ Instalasi & Pengembangan Lokal
 
-## Getting Started
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal:
 
-1. Clone the repository:
+1.  **Clone repositori**:
+    ```bash
+    git clone https://github.com/username/upttik.git
+    cd upttik
+    ```
 
-```bash
-git clone https://github.com/akash3444/pure-landing-shadcnui-template.git
-cd pure-landing-shadcnui-template
-```
+2.  **Instal dependensi**:
+    ```bash
+    npm install
+    ```
 
-2. To use Tailwind CSS v4.0:
+3.  **Jalankan server pengembangan**:
+    ```bash
+    npm run dev
+    ```
 
-- Ensure you’re using Node.js 20 or higher.
-- Switch to the tailwind-v4 branch:
+4.  **Buka di browser**:
+    Buka [http://localhost:3000](http://localhost:3000) untuk melihat hasilnya.
 
-```bash
-git checkout tailwind-v4
-```
+## 🏗️ Struktur Folder
 
-3. Install dependencies:
+-   `/app`: Berisi route utama dan halaman (Profil, Beranda, dll).
+-   `/components`: Komponen modular seperti Navbar, Footer, Hero, dan Card.
+-   `/components/ui`: Komponen dasar dari Shadcn UI.
+-   `/public`: Aset statis seperti gambar, logo, dan ikon.
+-   `/lib`: Fungsi utilitas (seperti konfigurasi `cn` untuk Tailwind).
 
-```bash
-npm install
-```
+## 📝 Script Tersedia
 
-4. Start the development server:
+-   `npm run dev`: Menjalankan dengan mode pengembangan (menggunakan Turbopack).
+-   `npm run build`: Membuat bundle produksi yang dioptimalkan.
+-   `npm run start`: Menjalankan server aplikasi yang sudah di-build.
+-   `npm run lint`: Menjalankan pengecekan ESLint untuk menjaga kualitas kode.
 
-```bash
-npm run dev
-```
+## 🤝 Kontribusi
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
+Kontribusi selalu diterima! Jika Anda ingin meningkatkan proyek ini, silakan buat pull request atau hubungi tim pengembang UPTTIK.
 
-## Customization
+---
 
-1. Replace the placeholder images with your own content.
-2. Modify the text and styles in the components to match your brand and messaging.
-3. Add your own features and sections as needed.
-
-## Why this template?
-
-This project is a base template for a landing page. It is built with Next.js, Tailwind CSS, Shadcn UI, and Shadcn UI Blocks. It is a great starting point for a landing page. You can customized the content and media files as per your needs. It is not intended to be a complete solution for a landing page. It is intended to be a starting point for a landing page.
-
-## Contributing
-
-If you have any suggestions or improvements, please create an issue or submit a pull request.
-# UPTTIK-UM-BENGKULU
-# UPTTIK-UM-BENGKULU
+© 2026 **UPTTIK Universitas Muhammadiyah Bengkulu**. Seluruh hak cipta dilindungi undang-undang.
