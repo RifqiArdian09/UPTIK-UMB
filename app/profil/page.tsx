@@ -345,7 +345,7 @@ const ProfilePage = () => {
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 whileInView={{ opacity: 1, scale: 1 }}
                                 viewport={{ once: true }}
-                                className="mb-0"
+                                className="mb-0 w-full max-w-[240px] md:max-w-[400px] mx-auto"
                             >
                                 <OrgCard
                                     name="Dedy Abdullah, M. Eng"
@@ -354,35 +354,36 @@ const ProfilePage = () => {
                             </motion.div>
 
                             {/* Connector */}
-                            <svg className="w-full max-w-5xl h-24 md:h-32" viewBox="0 0 800 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="400" y1="0" x2="400" y2="50" stroke="currentColor" strokeWidth="2" className="text-primary/30" />
-                                <path d="M 400 50 L 180 50 L 180 100" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/30" />
-                                <path d="M 400 50 L 620 50 L 620 100" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/30" />
+                            <svg className="w-full max-w-5xl h-20 md:h-32" viewBox="0 0 800 100" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                <line x1="400" y1="0" x2="400" y2="50" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" className="text-primary/30" />
+                                <path d="M 400 50 L 200 50 L 200 100" stroke="currentColor" strokeWidth="2" fill="none" vectorEffect="non-scaling-stroke" className="text-primary/30" />
+                                <path d="M 400 50 L 600 50 L 600 100" stroke="currentColor" strokeWidth="2" fill="none" vectorEffect="non-scaling-stroke" className="text-primary/30" />
                             </svg>
 
                             {/* Level 2: Kepala Bidang */}
-                            <div className="relative w-full max-w-5xl px-4">
-                                <div className="grid grid-cols-2 gap-4 md:gap-16">
+                            <div className="relative w-full max-w-6xl px-0 md:px-4">
+                                <div className="grid grid-cols-2 gap-4 md:gap-32">
                                     {/* Bidang Software */}
                                     <motion.div
                                         initial={{ opacity: 0, x: -30 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
-                                        className="flex flex-col items-center"
+                                        className="flex flex-col items-center w-full max-w-[350px] md:max-w-[550px] ml-auto"
                                     >
                                         <OrgCard
                                             name="M. Imanullah, S.Kom., M.T."
                                             role="Kabid. Software"
                                         />
 
-                                        <svg className="w-full max-w-xl h-20 md:h-24" viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <line x1="200" y1="0" x2="200" y2="35" stroke="currentColor" strokeWidth="2" className="text-primary/30" />
-                                            <path d="M 200 35 L 105 35 L 105 80" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/30" />
-                                            <path d="M 200 35 L 295 35 L 295 80" stroke="currentColor" strokeWidth="2" fill="none" className="text-primary/30" />
+                                        {/* Connector Software */}
+                                        <svg className="w-full max-w-xl h-16 md:h-24" viewBox="0 0 400 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                            <line x1="200" y1="0" x2="200" y2="35" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" className="text-primary/30" />
+                                            <path d="M 200 35 L 100 35 L 100 80" stroke="currentColor" strokeWidth="2" fill="none" vectorEffect="non-scaling-stroke" className="text-primary/30" />
+                                            <path d="M 200 35 L 300 35 L 300 80" stroke="currentColor" strokeWidth="2" fill="none" vectorEffect="non-scaling-stroke" className="text-primary/30" />
                                         </svg>
 
                                         <div className="relative w-full max-w-xl">
-                                            <div className="grid grid-cols-2 gap-2 md:gap-4">
+                                            <div className="grid grid-cols-2 gap-4 md:gap-10">
                                                 <OrgCard
                                                     name="Indra Novemri"
                                                     role="Teknisi Software"
@@ -402,16 +403,19 @@ const ProfilePage = () => {
                                         initial={{ opacity: 0, x: 30 }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
-                                        className="flex flex-col items-center"
+                                        className="flex flex-col items-center w-full max-w-[350px] md:max-w-[550px] mr-auto"
                                     >
                                         <OrgCard
                                             name="N. Ario Seno, S. Kom"
                                             role="Kabid. Jaringan"
                                         />
 
-                                        <div className="w-1 h-10 md:h-12 bg-primary/30 rounded-full" />
+                                        {/* Connector Jaringan */}
+                                        <svg className="w-full h-12 md:h-12" viewBox="0 0 100 40" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                                            <line x1="50" y1="0" x2="50" y2="40" stroke="currentColor" strokeWidth="2" vectorEffect="non-scaling-stroke" className="text-primary/30" />
+                                        </svg>
 
-                                        <div className="w-full max-w-[160px] md:max-w-xs pt-0">
+                                        <div className="w-full pt-0">
                                             <OrgCard
                                                 name="Abi Julian"
                                                 role="Teknisi Jaringan"
@@ -432,16 +436,16 @@ const ProfilePage = () => {
 
 const OrgCard = ({ name, role, isStaff }: { name: string, role: string, isStaff?: boolean }) => (
     <div className={cn(
-        "bg-card border border-primary/10 rounded-xl shadow-lg md:shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-primary/30 w-full md:min-w-[220px] relative overflow-hidden",
-        isStaff ? "px-2 py-3 md:px-6 md:py-4" : "px-3 py-4 md:px-8 md:py-6"
+        "bg-card border border-primary/10 rounded-xl shadow-lg md:shadow-xl transition-all duration-300 hover:shadow-2xl hover:border-primary/30 w-full md:min-w-[240px] relative overflow-hidden",
+        isStaff ? "px-1 py-1.5 md:px-6 md:py-4" : "px-2 py-2 md:px-8 md:py-6"
     )}>
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(var(--primary)_1px,transparent_1px)] bg-[size:10px_10px]"></div>
         <div className="absolute top-0 left-0 w-full h-1 bg-primary/20"></div>
         <div className="flex items-center gap-4">
             <div className="text-center flex-1 min-w-0">
                 <h4 className={cn(
-                    "font-black text-gray-900 dark:text-white leading-tight mb-0.5 md:mb-1",
-                    isStaff ? "text-[7px] md:text-sm" : "text-[9px] md:text-lg"
+                    "font-black text-gray-900 dark:text-white leading-tight mb-0 md:mb-1",
+                    isStaff ? "text-[8px] md:text-sm" : "text-[10px] md:text-lg"
                 )}>
                     {name}
                 </h4>
