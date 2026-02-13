@@ -17,7 +17,7 @@ const ProfilePage = () => {
                 <section className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 z-0">
                         <Image
-                            src="/team.jpeg"
+                            src="/visi.png"
                             alt="UMB Background"
                             fill
                             className="object-cover"
@@ -73,15 +73,12 @@ const ProfilePage = () => {
                                 <div className="lg:hidden relative group">
                                     <div className="relative z-10 rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl overflow-hidden border-2 border-primary/10 shadow-2xl">
                                         <Image
-                                            src="/visi.png"
+                                            src="/team.jpeg"
                                             alt="Tentang UPTTIK"
                                             width={800}
                                             height={450}
                                             className="w-full h-full object-cover aspect-video"
                                         />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent z-10" />
-                                        <div className="absolute top-4 right-4 w-10 h-10 border-t-2 border-r-2 border-white/20 rounded-tr-2xl pointer-events-none z-20"></div>
-                                        <div className="absolute bottom-4 left-4 w-10 h-10 border-b-2 border-l-2 border-white/20 rounded-bl-2xl pointer-events-none z-20"></div>
                                     </div>
                                 </div>
 
@@ -104,15 +101,12 @@ const ProfilePage = () => {
                             >
                                 <div className="relative z-10 rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-xl rounded-br-xl overflow-hidden border-2 border-primary/10 shadow-2xl">
                                     <Image
-                                        src="/visi.png"
+                                        src="/team.jpeg"
                                         alt="Tentang UPTTIK"
                                         width={800}
                                         height={450}
                                         className="w-full h-full object-cover aspect-video"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent z-10" />
-                                    <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-white/20 rounded-tr-3xl pointer-events-none z-20"></div>
-                                    <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-white/20 rounded-bl-3xl pointer-events-none z-20"></div>
                                 </div>
                                 <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-full border border-primary/20 animate-pulse z-0" />
                                 <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl z-0" />
@@ -122,16 +116,59 @@ const ProfilePage = () => {
                 </section>
 
                 {/* Vision Header */}
-                <header className="py-20 text-center">
-                    <div className="max-w-3xl mx-auto px-6">
-                        <span className="text-primary font-bold tracking-[0.3em] uppercase text-xs mb-4 block">Identity & Purpose</span>
-                        <motion.h1
-                            animate={{ y: [0, -5, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight"
+                <header className="py-32 text-center relative overflow-hidden">
+                    {/* Background Effects */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
+                        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -mr-48 -mt-48" />
+                        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] -ml-48 -mb-48" />
+                    </div>
+
+                    <div className="max-w-4xl mx-auto px-6 relative z-10">
+                        <motion.span
+                            initial={{ opacity: 0, y: 10 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6 block"
                         >
-                            Mendefinisikan Masa Depan Digital Kampus Melalui Visi yang Terarah.
+                            Identity & Purpose
+                        </motion.span>
+                        <motion.h1
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={{
+                                hidden: { opacity: 1 },
+                                visible: {
+                                    opacity: 1,
+                                    transition: {
+                                        staggerChildren: 0.04,
+                                        delayChildren: 0.2
+                                    }
+                                }
+                            }}
+                            className="text-4xl md:text-6xl font-black text-foreground leading-[1.1] tracking-tight"
+                        >
+                            {"Mendefinisikan Masa Depan Digital Kampus Melalui Visi yang Terarah.".split(" ").map((word, i) => (
+                                <span key={i} className="inline-block whitespace-nowrap">
+                                    {word.split("").map((char, j) => (
+                                        <motion.span
+                                            key={j}
+                                            variants={{
+                                                hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
+                                                visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                                            }}
+                                            transition={{ duration: 0.5, ease: "easeOut" }}
+                                            className="inline-block"
+                                        >
+                                            {char}
+                                        </motion.span>
+                                    ))}
+                                    <span className="inline-block">&nbsp;</span>
+                                </span>
+                            ))}
                         </motion.h1>
+
                     </div>
                 </header>
 
@@ -245,7 +282,7 @@ const ProfilePage = () => {
                                         <Image
                                             alt="Kemandirian Institusi"
                                             className="relative rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl shadow-2xl w-full aspect-video md:h-[400px] object-cover border-2 border-primary/10"
-                                            src="/misi2.png"
+                                            src="/misi2.jpeg"
                                             width={800}
                                             height={400}
                                         />

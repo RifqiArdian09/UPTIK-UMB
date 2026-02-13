@@ -66,14 +66,14 @@ export const ScrollToTop = () => {
                             {/* The Circuit Arrow */}
                             <svg className="w-8 h-8 relative z-10 overflow-visible" viewBox="0 0 40 40">
                                 {/* Soldering Points */}
-                                <circle className="fill-primary group-hover:fill-primary/80 transition-colors duration-300" cx="20" cy="8" r="1.5"></circle>
-                                <circle className="fill-primary group-hover:fill-primary/80 transition-colors duration-300" cx="8" cy="24" r="1.5"></circle>
-                                <circle className="fill-primary group-hover:fill-primary/80 transition-colors duration-300" cx="32" cy="24" r="1.5"></circle>
-                                <circle className="fill-primary group-hover:fill-primary/80 transition-colors duration-300" cx="20" cy="32" r="1.5"></circle>
+                                <circle className="fill-amber-500 group-hover:fill-amber-400 transition-colors duration-300" cx="20" cy="8" r="1.5"></circle>
+                                <circle className="fill-amber-500 group-hover:fill-amber-400 transition-colors duration-300" cx="8" cy="24" r="1.5"></circle>
+                                <circle className="fill-amber-500 group-hover:fill-amber-400 transition-colors duration-300" cx="32" cy="24" r="1.5"></circle>
+                                <circle className="fill-amber-500 group-hover:fill-amber-400 transition-colors duration-300" cx="20" cy="32" r="1.5"></circle>
 
                                 {/* Circuit Traces (Base) */}
                                 <path
-                                    className="stroke-primary opacity-60 group-hover:opacity-80 transition-opacity duration-300"
+                                    className="stroke-amber-500 opacity-60 group-hover:opacity-100 transition-opacity duration-300"
                                     d="M20 32 V12 L10 22 M20 12 L30 22"
                                     fill="none"
                                     strokeLinecap="round"
@@ -83,7 +83,7 @@ export const ScrollToTop = () => {
 
                                 {/* Glowing Data Pulse Traces (Animated) */}
                                 <motion.path
-                                    className="stroke-primary"
+                                    className="stroke-amber-400"
                                     d="M20 32 V12 L10 22 M20 12 L30 22"
                                     fill="none"
                                     strokeLinecap="round"

@@ -50,7 +50,7 @@ const layanan = [
     description:
       "Pengembangan website resmi, sistem informasi akademik, serta aplikasi berbasis web sesuai kebutuhan fakultas, program studi, dan unit kerja di lingkungan UMB.",
     icon: Globe,
-    image: "/layanan5.jpeg",
+    image: "/layanan5.png",
   },
 ];
 
