@@ -245,7 +245,7 @@ const ProfilePage = () => {
                                         <Image
                                             alt="Kemandirian Institusi"
                                             className="relative rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl shadow-2xl w-full aspect-video md:h-[400px] object-cover border-2 border-primary/10"
-                                            src="/misi2.jpeg"
+                                            src="/misi2.png"
                                             width={800}
                                             height={400}
                                         />
