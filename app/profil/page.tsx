@@ -14,7 +14,7 @@ const ProfilePage = () => {
             <Navbar />
             <main id="tentang" className="pt-16 pb-20">
                 {/* Hero Section */}
-                <section className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
+                <section className="relative w-full h-[350px] md:h-[500px] lg:h-[600px] flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 z-0">
                         <Image
                             src="/visi.png"
@@ -33,14 +33,14 @@ const ProfilePage = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Badge variant="outline" className="rounded-full px-6 py-2 border-white/20 bg-white/10 text-white mb-6 backdrop-blur-sm gap-2">
-                                <Building2 className="h-4 w-4" />
+                            <Badge variant="outline" className="rounded-full px-4 py-1.5 md:px-6 md:py-2 border-white/20 bg-white/10 text-white mb-4 md:mb-6 backdrop-blur-sm gap-2 text-[10px] md:text-xs">
+                                <Building2 className="h-3 w-3 md:h-4 md:w-4" />
                                 PROFIL INSTITUSI
                             </Badge>
-                            <h1 className="text-4xl md:text-6xl font-black tracking-tight mb-8 text-white drop-shadow-md">
+                            <h1 className="text-3xl md:text-6xl font-black tracking-tight mb-3 md:mb-8 text-white drop-shadow-md leading-tight">
                                 Mengenal <span className="text-white italic">UPTTIK UMB</span>
                             </h1>
-                            <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed font-medium drop-shadow-sm">
+                            <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/90 leading-relaxed font-medium drop-shadow-sm">
                                 Pusat keunggulan teknologi informasi yang berdedikasi mendukung transformasi digital di lingkungan Universitas Muhammadiyah Bengkulu.
                             </p>
                         </motion.div>
@@ -229,10 +229,10 @@ const ProfilePage = () => {
 
                         <div className="space-y-32">
                             <motion.div
-                                initial={{ opacity: 0, x: -30 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
                                 className="flex flex-col md:flex-row items-center gap-12 lg:gap-24"
                             >
                                 <div className="w-full md:w-1/2 relative group">
@@ -267,10 +267,10 @@ const ProfilePage = () => {
 
                             {/* Misi 02 */}
                             <motion.div
-                                initial={{ opacity: 0, scale: 0.9, y: 30 }}
-                                whileInView={{ opacity: 1, scale: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
                                 className="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-24"
                             >
                                 <div className="w-full md:w-1/2 relative group">
@@ -305,10 +305,10 @@ const ProfilePage = () => {
 
                             {/* Misi 03 */}
                             <motion.div
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-100px" }}
-                                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.6, ease: "easeOut" }}
                                 className="flex flex-col md:flex-row items-center gap-12 lg:gap-24"
                             >
                                 <div className="w-full md:w-1/2 relative group">
@@ -345,7 +345,7 @@ const ProfilePage = () => {
                 </section>
 
                 {/* Struktur Organisasi Section */}
-                <section id="struktur-organisasi" className="py-20 px-6 relative overflow-visible">
+                <section id="struktur-organisasi" className="py-20 px-4 relative overflow-hidden">
                     {/* Technical Divider */}
                     <div className="absolute top-0 left-0 w-full h-12 pointer-events-none -translate-y-[calc(100%-1px)] z-20 -scale-x-100">
                         <svg className="w-full h-full scale-y-[-1]" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -397,13 +397,12 @@ const ProfilePage = () => {
                                 <path d="M 400 50 L 600 50 L 600 100" stroke="currentColor" strokeWidth="2" fill="none" vectorEffect="non-scaling-stroke" className="text-primary/30" />
                             </svg>
 
-                            {/* Level 2: Kepala Bidang */}
-                            <div className="relative w-full max-w-6xl px-0 md:px-4">
-                                <div className="grid grid-cols-2 gap-4 md:gap-32">
+                            <div className="relative w-full max-w-6xl px-2">
+                                <div className="grid grid-cols-2 gap-3 md:gap-32">
                                     {/* Bidang Software */}
                                     <motion.div
-                                        initial={{ opacity: 0, x: -30 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         className="flex flex-col items-center w-full max-w-[350px] md:max-w-[550px] ml-auto"
                                     >
@@ -437,8 +436,8 @@ const ProfilePage = () => {
 
                                     {/* Bidang Jaringan */}
                                     <motion.div
-                                        initial={{ opacity: 0, x: 30 }}
-                                        whileInView={{ opacity: 1, x: 0 }}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         className="flex flex-col items-center w-full max-w-[350px] md:max-w-[550px] mr-auto"
                                     >
