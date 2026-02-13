@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion } from "motion/react";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
@@ -9,6 +10,11 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const ProfilePage = () => {
+    // Force scroll to top on mount to prevent navigation jumping
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }, []);
+
     return (
         <div className="min-h-screen bg-background text-foreground grid-bg">
             <Navbar />
@@ -29,7 +35,7 @@ const ProfilePage = () => {
 
                     <div className="relative z-10 max-w-7xl mx-auto text-center px-6">
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
@@ -115,102 +121,122 @@ const ProfilePage = () => {
                     </div>
                 </section>
 
-                {/* Vision Header */}
-                <header className="py-32 text-center relative overflow-hidden">
-                    {/* Background Effects */}
-                    <div className="absolute inset-0 pointer-events-none">
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] animate-pulse" />
-                        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] -mr-48 -mt-48" />
-                        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary/10 rounded-full blur-[100px] -ml-48 -mb-48" />
-                    </div>
-
-                    <div className="max-w-4xl mx-auto px-6 relative z-10">
-                        <motion.span
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6 block"
-                        >
-                            Identity & Purpose
-                        </motion.span>
-                        <motion.h1
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={{
-                                hidden: { opacity: 1 },
-                                visible: {
-                                    opacity: 1,
-                                    transition: {
-                                        staggerChildren: 0.04,
-                                        delayChildren: 0.2
-                                    }
-                                }
-                            }}
-                            className="text-4xl md:text-6xl font-black text-foreground leading-[1.1] tracking-tight"
-                        >
-                            {"Mendefinisikan Masa Depan Digital Kampus Melalui Visi yang Terarah.".split(" ").map((word, i) => (
-                                <span key={i} className="inline-block whitespace-nowrap">
-                                    {word.split("").map((char, j) => (
-                                        <motion.span
-                                            key={j}
-                                            variants={{
-                                                hidden: { opacity: 0, y: 20, filter: "blur(10px)" },
-                                                visible: { opacity: 1, y: 0, filter: "blur(0px)" }
-                                            }}
-                                            transition={{ duration: 0.5, ease: "easeOut" }}
-                                            className="inline-block"
-                                        >
-                                            {char}
-                                        </motion.span>
-                                    ))}
-                                    <span className="inline-block">&nbsp;</span>
-                                </span>
-                            ))}
-                        </motion.h1>
-
-                    </div>
-                </header>
-
-                {/* Visi Section */}
+                {/* Unified Identity & Vision Section */}
                 <section id="visi" className="relative w-full py-32 overflow-hidden bg-gradient-to-br from-muted/50 to-primary/5 dark:from-background dark:to-primary/10">
+                    {/* Technical Frame Decorations - Unified for both sections */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        {/* Top Divider */}
+                        <div className="absolute top-0 left-0 w-full h-8 md:h-12">
+                            <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="scale(1, -1) translate(0, -48)">
+                                    <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
+                                    <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
+                                </g>
+                            </svg>
+                        </div>
+
+                        {/* Side Accents - Spanning full height */}
+                        <div className="hidden sm:block absolute top-8 md:top-12 bottom-8 md:bottom-12 left-0 w-[50px] border-l border-primary/10 h-full" />
+                        <div className="hidden sm:block absolute top-8 md:top-12 bottom-8 md:bottom-12 right-0 w-[50px] border-r border-primary/10 h-full" />
+
+                        {/* Bottom Divider */}
+                        <div className="absolute bottom-0 left-0 w-full h-8 md:h-12">
+                            <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
+                                <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    {/* Shared Background Effects */}
                     <div className="absolute inset-0 opacity-10 pointer-events-none">
                         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
                     </div>
-                    <div className="max-w-5xl mx-auto px-8 relative z-10 text-center">
-                        <div className="relative mb-12 inline-flex items-center justify-center">
-                            <div className="relative w-20 h-20 bg-background border-2 border-primary/30 rounded-tl-[2.5rem] rounded-br-[2.5rem] rounded-tr-lg rounded-bl-lg flex items-center justify-center shadow-xl">
-                                <Target className="text-primary h-10 w-10" />
-                            </div>
+
+                    <div className="max-w-7xl mx-auto px-6 relative z-10">
+                        {/* Header Part */}
+                        <div className="text-center mb-32">
+                            <motion.span
+                                initial={{ opacity: 0, y: -10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6 block"
+                            >
+                                Identity & Purpose
+                            </motion.span>
+                            <motion.h1
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={{
+                                    hidden: { opacity: 1 },
+                                    visible: {
+                                        opacity: 1,
+                                        transition: {
+                                            staggerChildren: 0.04,
+                                            delayChildren: 0.2
+                                        }
+                                    }
+                                }}
+                                className="text-4xl md:text-6xl font-black text-foreground leading-[1.1] tracking-tight"
+                            >
+                                {"Mendefinisikan Masa Depan Digital Kampus Melalui Visi yang Terarah.".split(" ").map((word, i) => (
+                                    <span key={i} className="inline-block whitespace-nowrap">
+                                        {word.split("").map((char, j) => (
+                                            <motion.span
+                                                key={j}
+                                                variants={{
+                                                    hidden: { opacity: 0, y: -20, filter: "blur(10px)" },
+                                                    visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                                                }}
+                                                transition={{ duration: 0.5, ease: "easeOut" }}
+                                                className="inline-block"
+                                            >
+                                                {char}
+                                            </motion.span>
+                                        ))}
+                                        <span className="inline-block">&nbsp;</span>
+                                    </span>
+                                ))}
+                            </motion.h1>
                         </div>
-                        <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-8">Visi Kami</h2>
-                        <motion.blockquote
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            variants={{
-                                hidden: { opacity: 1 },
-                                visible: {
-                                    opacity: 1,
-                                    transition: {
-                                        staggerChildren: 0.03,
+
+                        {/* Visi Part */}
+                        <div className="max-w-5xl mx-auto text-center pb-12">
+                            <div className="relative mb-12 inline-flex items-center justify-center">
+                                <div className="relative w-20 h-20 bg-background border-2 border-primary/30 rounded-tl-[2.5rem] rounded-br-[2.5rem] rounded-tr-lg rounded-bl-lg flex items-center justify-center shadow-xl">
+                                    <Target className="text-primary h-10 w-10" />
+                                </div>
+                            </div>
+                            <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-8">Visi Kami</h2>
+                            <motion.blockquote
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                variants={{
+                                    hidden: { opacity: 1 },
+                                    visible: {
+                                        opacity: 1,
+                                        transition: {
+                                            staggerChildren: 0.03,
+                                        },
                                     },
-                                },
-                            }}
-                            className="text-3xl md:text-4xl font-medium text-foreground italic leading-snug"
-                        >
-                            &quot;{"Menjadi unit pelayanan teknologi informasi yang profesional dan inovatif dalam pengembangan IPTEKS, berorientasi kewirausahaan, serta menjunjung tinggi nilai-nilai keislaman dalam setiap layanan dan kontribusi.".split("").map((char, index) => (
-                                <motion.span
-                                    key={index}
-                                    variants={{
-                                        hidden: { opacity: 0 },
-                                        visible: { opacity: 1 }
-                                    }}
-                                >
-                                    {char}
-                                </motion.span>
-                            ))}&quot;
-                        </motion.blockquote>
+                                }}
+                                className="text-3xl md:text-4xl font-medium text-foreground italic leading-snug"
+                            >
+                                &quot;{"Menjadi unit pelayanan teknologi informasi yang profesional dan inovatif dalam pengembangan IPTEKS, berorientasi kewirausahaan, serta menjunjung tinggi nilai-nilai keislaman dalam setiap layanan dan kontribusi.".split("").map((char, index) => (
+                                    <motion.span
+                                        key={index}
+                                        variants={{
+                                            hidden: { opacity: 0 },
+                                            visible: { opacity: 1 }
+                                        }}
+                                    >
+                                        {char}
+                                    </motion.span>
+                                ))}&quot;
+                            </motion.blockquote>
+                        </div>
                     </div>
                 </section>
 
@@ -229,7 +255,7 @@ const ProfilePage = () => {
 
                         <div className="space-y-32">
                             <motion.div
-                                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                                initial={{ opacity: 0, y: -30, filter: "blur(5px)" }}
                                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -267,7 +293,7 @@ const ProfilePage = () => {
 
                             {/* Misi 02 */}
                             <motion.div
-                                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                                initial={{ opacity: 0, y: -30, filter: "blur(5px)" }}
                                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -305,7 +331,7 @@ const ProfilePage = () => {
 
                             {/* Misi 03 */}
                             <motion.div
-                                initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+                                initial={{ opacity: 0, y: -30, filter: "blur(5px)" }}
                                 whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                                 viewport={{ once: true, margin: "-50px" }}
                                 transition={{ duration: 0.6, ease: "easeOut" }}
@@ -346,18 +372,27 @@ const ProfilePage = () => {
 
                 {/* Struktur Organisasi Section */}
                 <section id="struktur-organisasi" className="py-20 px-4 relative overflow-hidden">
-                    {/* Technical Divider */}
-                    <div className="absolute top-0 left-0 w-full h-12 pointer-events-none -translate-y-[calc(100%-1px)] z-20 -scale-x-100">
-                        <svg className="w-full h-full scale-y-[-1]" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
-                            <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
-                        </svg>
+                    {/* Technical Frame Decorations - Visible on all devices */}
+                    <div className="absolute inset-0 pointer-events-none">
+                        {/* Top Divider */}
+                        <div className="absolute top-0 left-0 w-full h-8 md:h-12">
+                            <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="scale(1, -1) translate(0, -48)">
+                                    <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
+                                    <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
+                                </g>
+                            </svg>
+                        </div>
+
+                        {/* Side Accents */}
+                        <div className="hidden sm:block absolute top-8 md:top-12 bottom-8 md:bottom-12 left-0 w-[50px] border-l border-primary/10 h-full" />
+                        <div className="hidden sm:block absolute top-8 md:top-12 bottom-8 md:bottom-12 right-0 w-[50px] border-r border-primary/10 h-full" />
                     </div>
 
                     <div className="max-w-7xl mx-auto relative z-10">
                         {/* Header */}
                         <motion.div
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: -20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             className="text-center mb-16"
@@ -401,7 +436,7 @@ const ProfilePage = () => {
                                 <div className="grid grid-cols-2 gap-3 md:gap-32">
                                     {/* Bidang Software */}
                                     <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: -20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         className="flex flex-col items-center w-full max-w-[350px] md:max-w-[550px] ml-auto"
@@ -436,7 +471,7 @@ const ProfilePage = () => {
 
                                     {/* Bidang Jaringan */}
                                     <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: -20 }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         className="flex flex-col items-center w-full max-w-[350px] md:max-w-[550px] mr-auto"

@@ -167,7 +167,7 @@ const Footer = () => {
         <Separator className="bg-slate-200 dark:bg-white/5 mb-8" />
 
         {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] sm:text-xs text-muted-foreground uppercase tracking-[0.2em] font-bold">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-[10px] sm:text-xs text-muted-foreground uppercase tracking-[0.2em] font-bold text-center">
           <p>© {new Date().getFullYear()} UPTTIK Universitas Muhammadiyah Bengkulu. All rights reserved.</p>
         </div>
       </div>

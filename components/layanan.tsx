@@ -65,7 +65,7 @@ const containerVariants: Variants = {
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: -30 },
   visible: {
     opacity: 1,
     y: 0,
@@ -83,14 +83,30 @@ const Layanan = () => {
       id="layanan"
       className="relative flex flex-col items-center justify-center py-24 xs:py-32 px-6 overflow-hidden bg-muted/50"
     >
-      {/* Technical Section Divider at Top (Flipped) - Desktop Only */}
-      <div className="hidden md:block absolute top-0 left-0 w-full h-12 pointer-events-none">
-        <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <g transform="scale(1, -1) translate(0, -48)">
+      {/* Technical Frame Decorations - Visible on all devices */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Top Divider */}
+        <div className="absolute top-0 left-0 w-full h-8 md:h-12">
+          <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <g transform="scale(1, -1) translate(0, -48)">
+              <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
+              <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
+            </g>
+          </svg>
+        </div>
+
+        {/* Side Accents - Only on larger screens to avoid clutter on mobile */}
+        <div className="hidden sm:block absolute top-8 md:top-12 bottom-8 md:bottom-12 left-0 w-[50px] border-l border-primary/10 h-full" />
+        <div className="absolute top-8 md:top-12 bottom-8 md:bottom-12 right-0 w-[50px] border-r border-primary/10 h-full sm:hidden" /> {/* Small right border for mobile if needed, but usually looks cleaner without on very small screens */}
+        <div className="hidden sm:block absolute top-8 md:top-12 bottom-8 md:bottom-12 right-0 w-[50px] border-r border-primary/10 h-full" />
+
+        {/* Bottom Divider */}
+        <div className="absolute bottom-0 left-0 w-full h-8 md:h-12">
+          <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
             <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
-          </g>
-        </svg>
+          </svg>
+        </div>
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto">
@@ -112,7 +128,7 @@ const Layanan = () => {
             Layanan Unggulan Kami
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
@@ -241,13 +257,6 @@ const Layanan = () => {
         </motion.div>
       </div>
 
-      {/* Technical Section Divider at Bottom - Desktop Only */}
-      <div className="hidden md:block absolute bottom-0 left-0 w-full h-12 pointer-events-none">
-        <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
-          <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
-        </svg>
-      </div>
     </section>
   );
 };
