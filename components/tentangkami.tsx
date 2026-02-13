@@ -22,7 +22,7 @@ const Tentangkami = () => {
             transition={{ duration: 0.8, type: "spring" }}
             className="relative"
           >
-            <div className="relative z-10 rounded-[3rem] overflow-hidden border-8 border-background shadow-2xl">
+            <div className="relative z-10 rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-xl rounded-br-xl overflow-hidden border-2 border-primary/10 shadow-2xl group">
               <Image
                 src="/tentanghome.jpeg"
                 alt="Tentang Kami UPTTIK"
@@ -30,12 +30,18 @@ const Tentangkami = () => {
                 height={800}
                 className="w-full h-auto object-cover aspect-[4/5] lg:aspect-square"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-primary/20 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-primary/30 to-transparent z-10" />
+
+              {/* Technical Corner Accents */}
+              <div className="absolute top-6 right-6 w-12 h-12 border-t-2 border-r-2 border-white/20 rounded-tr-3xl pointer-events-none z-20"></div>
+              <div className="absolute bottom-6 left-6 w-12 h-12 border-b-2 border-l-2 border-white/20 rounded-bl-3xl pointer-events-none z-20"></div>
             </div>
 
-            {/* Decorative background shape */}
-            <div className="absolute -top-10 -left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl z-0" />
-            <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl z-0" />
+            {/* Decorative tech accents */}
+            <div className="absolute -top-6 -left-6 w-32 h-32 bg-primary/5 rounded-full border border-primary/20 animate-pulse z-0" />
+            <div className="absolute -bottom-10 -right-10 w-80 h-80 bg-primary/5 rounded-full blur-3xl z-0" />
+            <div className="absolute top-1/3 -right-4 w-1 h-24 bg-primary/20 z-20 rounded-full" />
+            <div className="absolute bottom-1/3 -left-4 w-1 h-24 bg-primary/20 z-20 rounded-full" />
           </motion.div>
 
           {/* Right Side: Content */}
@@ -45,10 +51,10 @@ const Tentangkami = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4 block">
+              <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4 block font-heading">
                 Mengenal Lebih Dekat
               </span>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-8">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-8 ">
                 Kami menyediakan Teknik <span className="text-primary">&</span> Analisis Big Data & Solusi Data.
               </h2>
             </motion.div>
@@ -72,7 +78,7 @@ const Tentangkami = () => {
               transition={{ delay: 0.3 }}
               className="mt-12"
             >
-              <Button asChild size="xl" className="rounded-2xl group shadow-lg shadow-primary/25">
+              <Button asChild size="xl" className="rounded-tr-[2rem] rounded-bl-[2rem] rounded-tl-lg rounded-br-lg group shadow-lg shadow-primary/25 px-10 transition-all duration-500 hover:rounded-2xl font-semibold">
                 <Link href="/profil" className="flex items-center">
                   Selengkapnya
                   <motion.span

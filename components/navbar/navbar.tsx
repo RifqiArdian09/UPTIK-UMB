@@ -12,10 +12,10 @@ const Navbar = () => {
           <Link href="/#beranda" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
             <Logo />
             <div className="flex flex-col">
-              <span className="font-extrabold text-sm sm:text-base tracking-tight block bg-clip-text text-transparent bg-linear-to-r from-foreground to-foreground/80 leading-tight">
+              <span className="font-extrabold text-sm sm:text-base tracking-tight block bg-clip-text text-transparent bg-linear-to-r from-foreground to-foreground/80 leading-tight font-heading">
                 UPTTIK
               </span>
-              <span className="text-[10px] sm:text-xs tracking-widest block text-primary uppercase leading-tight">
+              <span className="text-[10px] sm:text-xs tracking-widest block text-primary uppercase leading-tight font-heading">
                 Universitas Muhammadiyah Bengkulu
               </span>
             </div>

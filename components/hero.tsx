@@ -42,7 +42,7 @@ const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="mt-8 text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg"
+            className="mt-8 text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-extrabold leading-[1.1] tracking-tight text-white drop-shadow-lg font-heading"
           >
             UPTTIK UNIVERSITAS <br />
             <span className="italic">MUHAMMADIYAH BENGKULU</span>
@@ -65,7 +65,7 @@ const Hero = () => {
           >
             <Button
               size="xl"
-              className="w-full sm:w-auto rounded-full text-base font-semibold group"
+              className="w-full sm:w-auto rounded-tr-[2rem] rounded-bl-[2rem] rounded-tl-lg rounded-br-lg text-base font-bold group transition-all duration-500 hover:rounded-2xl"
               asChild
             >
               <Link href="#tentang">
@@ -76,7 +76,7 @@ const Hero = () => {
             <Button
               size="xl"
               variant="outline"
-              className="w-full sm:w-auto rounded-full text-base font-semibold group"
+              className="w-full sm:w-auto rounded-tr-[2rem] rounded-bl-[2rem] rounded-tl-lg rounded-br-lg text-base font-bold group transition-all duration-500 hover:rounded-2xl"
               asChild
             >
               <Link href="#footer">

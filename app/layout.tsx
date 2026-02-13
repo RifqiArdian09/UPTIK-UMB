@@ -1,12 +1,16 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
-import { Geist } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
+const geist = GeistSans;
+
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +29,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistSans.className} antialiased bg-background text-foreground`} suppressHydrationWarning={true}>
+      <body className={`${geist.variable} ${plusJakartaSans.variable} ${plusJakartaSans.className} antialiased bg-background text-foreground grid-bg`} suppressHydrationWarning={true}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            {children}
+            <ScrollToTop />
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

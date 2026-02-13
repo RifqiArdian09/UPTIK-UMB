@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { motion, Variants } from "motion/react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 
 const layanan = [
   {
@@ -80,9 +81,18 @@ const Layanan = () => {
   return (
     <section
       id="layanan"
-      className="relative flex flex-col items-center justify-center py-24 xs:py-32 px-6 overflow-hidden bg-muted/30"
+      className="relative flex flex-col items-center justify-center py-24 xs:py-32 px-6 overflow-hidden bg-muted/50"
     >
-      
+      {/* Technical Section Divider at Top (Flipped) - Desktop Only */}
+      <div className="hidden md:block absolute top-0 left-0 w-full h-12 pointer-events-none">
+        <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <g transform="scale(1, -1) translate(0, -48)">
+            <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
+            <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
+          </g>
+        </svg>
+      </div>
+
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         <div className="flex flex-col items-center mb-20">
           <motion.div
@@ -97,7 +107,7 @@ const Layanan = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-center tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-center tracking-tight font-heading"
           >
             Layanan Unggulan Kami
           </motion.h2>
@@ -120,12 +130,18 @@ const Layanan = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4"
         >
-          {layanan.slice(0, 3).map((item) => {
+          {layanan.slice(0, 3).map((item, idx) => {
+            const isEven = idx % 2 === 0;
             return (
               <motion.div
                 key={item.title}
                 variants={itemVariants}
-                className="group relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-muted cursor-pointer"
+                className={cn(
+                  "group relative aspect-[4/5] sm:aspect-video lg:aspect-square xl:aspect-[3/4] overflow-hidden bg-card border border-primary/5 cursor-pointer shadow-lg",
+                  isEven
+                    ? "rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl"
+                    : "rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl"
+                )}
               >
                 {item.image ? (
                   <Image
@@ -141,16 +157,21 @@ const Layanan = () => {
                 )}
 
                 {/* Text Content Overlay */}
-                <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20">
                   {item.icon && (
-                    <div className="mb-3">
-                      <item.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                    <div className="mb-4">
+                      <div className={cn(
+                        "w-12 h-12 flex items-center justify-center bg-background border-2 border-primary/30 shadow-xl",
+                        isEven ? "rounded-tr-2xl rounded-bl-2xl" : "rounded-tl-2xl rounded-br-2xl"
+                      )}>
+                        <item.icon className="w-6 h-6 text-primary" />
+                      </div>
                     </div>
                   )}
-                  <h3 className="text-lg md:text-xl font-bold text-white leading-tight mb-2">
+                  <h3 className="text-xl md:text-2xl font-black text-white leading-tight mb-2 font-heading uppercase italic tracking-wide">
                     {item.title}
                   </h3>
-                  <p className="text-[11px] md:text-sm text-white/90 leading-relaxed line-clamp-4 md:line-clamp-none">
+                  <p className="text-xs md:text-sm text-zinc-300 leading-relaxed font-semibold">
                     {item.description}
                   </p>
                 </div>
@@ -165,14 +186,22 @@ const Layanan = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:max-w-4xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
-          {layanan.slice(3).map((item) => {
+          {layanan.slice(3).map((item, idx) => {
+            // idx for slice(3) starts at 0, which is index 3 in original array
+            // We want it to alternate correctly with the previous row
+            const isEven = (idx + 1) % 2 === 0;
             return (
               <motion.div
                 key={item.title}
                 variants={itemVariants}
-                className="group relative aspect-[3/4] overflow-hidden rounded-[2rem] bg-muted cursor-pointer"
+                className={cn(
+                  "group relative aspect-[4/5] sm:aspect-video xl:aspect-video overflow-hidden bg-card border border-primary/5 cursor-pointer shadow-lg",
+                  isEven
+                    ? "rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl"
+                    : "rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl"
+                )}
               >
                 {item.image ? (
                   <Image
@@ -188,16 +217,21 @@ const Layanan = () => {
                 )}
 
                 {/* Text Content Overlay */}
-                <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/40 to-transparent">
+                <div className="absolute inset-0 p-5 md:p-8 flex flex-col justify-end bg-gradient-to-t from-black/90 via-black/20 to-transparent z-20">
                   {item.icon && (
-                    <div className="mb-3">
-                      <item.icon className="w-6 h-6 md:w-8 md:h-8 text-white" />
+                    <div className="mb-4">
+                      <div className={cn(
+                        "w-12 h-12 flex items-center justify-center bg-background border-2 border-primary/30 shadow-xl",
+                        isEven ? "rounded-tr-2xl rounded-bl-2xl" : "rounded-tl-2xl rounded-br-2xl"
+                      )}>
+                        <item.icon className="w-6 h-6 text-primary" />
+                      </div>
                     </div>
                   )}
-                  <h3 className="text-lg md:text-xl font-bold text-white leading-tight mb-2">
+                  <h3 className="text-xl md:text-2xl font-black text-white leading-tight mb-2 font-heading uppercase italic tracking-wide">
                     {item.title}
                   </h3>
-                  <p className="text-[11px] md:text-sm text-white/90 leading-relaxed line-clamp-4 md:line-clamp-none">
+                  <p className="text-xs md:text-sm text-zinc-300 leading-relaxed font-semibold">
                     {item.description}
                   </p>
                 </div>
@@ -205,6 +239,14 @@ const Layanan = () => {
             );
           })}
         </motion.div>
+      </div>
+
+      {/* Technical Section Divider at Bottom - Desktop Only */}
+      <div className="hidden md:block absolute bottom-0 left-0 w-full h-12 pointer-events-none">
+        <svg className="w-full h-full preserve-3d" viewBox="0 0 1440 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 48H1440V24L1400 0H1200L1176 24H264L240 0H40L0 24V48Z" fill="currentColor" className="text-background" />
+          <path d="M240 0L264 24H1176L1200 0" stroke="currentColor" strokeWidth="1" className="text-primary/10" />
+        </svg>
       </div>
     </section>
   );
