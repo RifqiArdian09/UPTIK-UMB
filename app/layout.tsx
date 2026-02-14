@@ -15,6 +15,7 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   title: "Unit Pelayanan Teknik Informatika dan Komunikasi - UM Bengkulu",
+  description: "Unit Pelayanan Teknik Informatika dan Komunikasi (UPTTIK) merupakan unit kerja strategis di Universitas Muhammadiyah Bengkulu yang bertanggung jawab penuh atas tata kelola digital kampus.",
   openGraph: {
     type: "website",
     siteName: "UPTTIK",
