@@ -12,7 +12,10 @@ import { cn } from "@/lib/utils";
 
 import { useLanguage } from "@/context/language-context";
 
+import { useState } from "react";
+
 export const NavigationSheet = () => {
+  const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const { t } = useLanguage();
 
@@ -35,10 +38,11 @@ export const NavigationSheet = () => {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+    setOpen(false);
   };
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
         <Button variant="outline" size="icon" className="group rounded-xl border-primary/20 hover:border-primary/50 transition-colors bg-background/50 backdrop-blur-sm">
           <Menu className="h-5 w-5 transition-transform group-hover:scale-110" />
@@ -52,17 +56,19 @@ export const NavigationSheet = () => {
         <div className="flex flex-col h-full bg-background/80 backdrop-blur-xl relative z-10">
           <SheetHeader className="p-6 text-left border-b border-primary/5 relative">
             <SheetTitle>
-              <Link href="/#beranda" className="flex items-center gap-3">
-                <Logo />
-                <div className="flex flex-col text-left">
-                  <span className="font-extrabold text-lg tracking-tight block bg-clip-text text-transparent bg-linear-to-r from-primary to-primary/60 leading-tight font-heading">
-                    UPTTIK
-                  </span>
-                  <span className="text-[10px] tracking-[0.2em] block text-muted-foreground uppercase leading-tight font-heading font-bold">
-                    Universitas Muhammadiyah Bengkulu
-                  </span>
-                </div>
-              </Link>
+              <SheetClose asChild>
+                <Link href="/#beranda" onClick={(e) => handleScroll(e, "/#beranda")} className="flex items-center gap-3">
+                  <Logo />
+                  <div className="flex flex-col text-left">
+                    <span className="font-extrabold text-lg tracking-tight block bg-clip-text text-transparent bg-linear-to-r from-primary to-primary/60 leading-tight font-heading">
+                      UPTTIK
+                    </span>
+                    <span className="text-[10px] tracking-[0.2em] block text-muted-foreground uppercase leading-tight font-heading font-bold">
+                      Universitas Muhammadiyah Bengkulu
+                    </span>
+                  </div>
+                </Link>
+              </SheetClose>
             </SheetTitle>
             <SheetClose asChild>
               <Button variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full hover:bg-primary/10 hover:text-primary transition-colors">

@@ -79,7 +79,7 @@ const Hero = () => {
             <Button
               size="xl"
               variant="outline"
-              className="w-full sm:w-auto rounded-tr-[2rem] rounded-bl-[2rem] rounded-tl-lg rounded-br-lg text-base font-bold group transition-all duration-500 hover:rounded-2xl text-white"
+              className="w-full sm:w-auto rounded-tr-[2rem] rounded-bl-[2rem] rounded-tl-lg rounded-br-lg text-base font-bold group transition-all duration-500 hover:rounded-2xl text-foreground"
               asChild
             >
               <Link href="#footer">
