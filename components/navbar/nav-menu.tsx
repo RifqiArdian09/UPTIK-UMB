@@ -14,17 +14,32 @@ import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { id: "beranda", name: "Beranda", icon: Home, href: "/#beranda" },
-  { id: "tentang", name: "Tentang Kami", icon: Info, href: "/#tentang" },
-  { id: "layanan", name: "Layanan", icon: Cpu, href: "/#layanan" },
-  { id: "testimonials", name: "Testimoni", icon: MessageSquareQuote, href: "/#testimonials" },
-  { id: "footer", name: "Kontak", icon: Send, href: "/#footer" },
-];
+import { useLanguage } from "@/context/language-context";
 
 export const NavMenu = (props: NavigationMenuProps) => {
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navItems = [
+    { id: "beranda", name: t("navbar.home"), icon: Home, href: "/#beranda" },
+    { id: "tentang", name: t("navbar.about"), icon: Info, href: "/#tentang" },
+    { id: "layanan", name: t("navbar.services"), icon: Cpu, href: "/#layanan" },
+    { id: "testimonials", name: t("navbar.testimonials"), icon: MessageSquareQuote, href: "/#testimonials" },
+    { id: "footer", name: t("navbar.contact"), icon: Send, href: "/#footer" },
+  ];
+
   const activeSection = useActiveSection(navItems.map((item) => item.id));
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element && pathname === "/") {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <NavigationMenu {...props}>
@@ -44,6 +59,7 @@ export const NavMenu = (props: NavigationMenuProps) => {
               <NavigationMenuLink asChild>
                 <Link
                   href={item.href}
+                  onClick={(e) => handleScroll(e, item.href)}
                   className={cn(
                     "relative flex items-center gap-2 text-[13px] font-bold uppercase tracking-widest transition-all duration-300 font-heading pb-1",
                     isActive ? "text-primary" : "text-muted-foreground hover:text-primary"

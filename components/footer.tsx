@@ -12,35 +12,33 @@ import { motion } from "motion/react";
 import Link from "next/link";
 import Image from "next/image";
 
+import { useLanguage } from "@/context/language-context";
+
 type FooterLink = {
   name: string;
   href?: string;
 };
 
-const footerLinks: { title: string; links: FooterLink[] }[] = [
-  {
-    title: "Layanan",
-    links: [
-      { name: "Infrastruktur & Jaringan" },
-      { name: "Servis & Maintenance Perangkat" },
-      { name: "Dukungan Teknis & IT Support" },
-      { name: "Konfigurasi Server & Data Center" },
-      { name: "Pengembangan Website & Sistem Informasi" },
-    ],
-  },
-  {
-    title: "Akademik",
-    links: [
-      { name: "SIAKAD", href: "https://siakad.umb.ac.id/umb/" },
-      { name: "SIMARU", href: "https://simaru.umb.ac.id/" },
-      { name: "SIKAMU", href: "https://sikamu.umb.ac.id/" },
-      { name: "SISENJA", href: "https://presensi.umb.ac.id/login" },
-      { name: "SIKAWAN", href: "https://sikawan.umb.ac.id/" },
-    ],
-  },
-];
-
 const Footer = () => {
+  const { t } = useLanguage();
+
+  const footerLinks: { title: string; links: FooterLink[] }[] = [
+    {
+      title: t("footer.sections.services"),
+      links: (t("layanan.items") as any[]).map(item => ({ name: item.title })),
+    },
+    {
+      title: t("footer.sections.academic"),
+      links: [
+        { name: "SIAKAD", href: "https://siakad.umb.ac.id/umb/" },
+        { name: "SIMARU", href: "https://simaru.umb.ac.id/" },
+        { name: "SIKAMU", href: "https://sikamu.umb.ac.id/" },
+        { name: "SISENJA", href: "https://presensi.umb.ac.id/login" },
+        { name: "SIKAWAN", href: "https://sikawan.umb.ac.id/" },
+      ],
+    },
+  ];
+
   return (
     <footer id="footer" className="w-full bg-background text-muted-foreground pt-16 pb-8 border-t border-border relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -83,9 +81,9 @@ const Footer = () => {
 
             {/* Text Content */}
             <div className="text-center lg:text-left">
-              <h2 className="text-xl lg:text-3xl font-bold tracking-tight mb-2 text-card-foreground font-heading">Butuh Bantuan Mendesak?</h2>
+              <h2 className="text-xl lg:text-3xl font-bold tracking-tight mb-2 text-card-foreground font-heading">{t("footer.help_title")}</h2>
               <p className="text-muted-foreground text-base lg:text-lg font-medium max-w-md">
-                Tim support IT UPTTIK aktif dan siap membantu kendala teknis Anda secara real-time.
+                {t("footer.help_description")}
               </p>
             </div>
           </div>
@@ -97,7 +95,7 @@ const Footer = () => {
               target="_blank"
               className="inline-flex items-center justify-center w-full lg:w-auto px-4 py-3.5 lg:px-10 lg:py-4 border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white dark:hover:bg-[#25D366] dark:hover:border-[#25D366] dark:hover:text-black font-bold rounded-tr-[1.5rem] rounded-bl-[1.5rem] rounded-tl-md rounded-br-md transition-all duration-500 group whitespace-nowrap hover:rounded-2xl"
             >
-              <span className="mr-2 text-sm sm:text-base">Chat WhatsApp Sekarang</span>
+              <span className="mr-2 text-sm sm:text-base">{t("footer.whatsapp_btn")}</span>
               <Send className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
@@ -120,11 +118,11 @@ const Footer = () => {
               </div>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed font-heading">
-              Membangun masa depan digital Universitas Muhammadiyah Bengkulu melalui teknologi informasi yang handal dan inovatif.
+              {t("footer.description")}
             </p>
           </div>
 
-          {[footerLinks[0], footerLinks[1]].map((section) => (
+          {footerLinks.map((section) => (
             <div key={section.title} className="col-span-1">
               <h4 className="text-foreground font-semibold mb-6 uppercase tracking-widest text-xs font-heading">{section.title}</h4>
               <ul className="space-y-3 text-muted-foreground text-sm font-heading">
@@ -146,7 +144,7 @@ const Footer = () => {
           ))}
 
           <div className="col-span-2 lg:col-span-1">
-            <h4 className="text-foreground font-semibold mb-6 uppercase tracking-widest text-xs font-heading">Kontak</h4>
+            <h4 className="text-foreground font-semibold mb-6 uppercase tracking-widest text-xs font-heading">{t("footer.sections.contact")}</h4>
             <div className="space-y-4 text-sm text-muted-foreground font-heading">
               <div className="flex gap-4">
                 <MapPin className="text-primary w-5 h-5 flex-shrink-0" />
@@ -168,7 +166,7 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-[10px] sm:text-xs text-muted-foreground uppercase tracking-[0.2em] font-bold text-center">
-          <p>© {new Date().getFullYear()} UPTTIK Universitas Muhammadiyah Bengkulu. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} UPTTIK Universitas Muhammadiyah Bengkulu. {t("footer.copyright")}</p>
         </div>
       </div>
     </footer>

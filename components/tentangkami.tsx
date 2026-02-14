@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { motion } from "motion/react";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { useLanguage } from "@/context/language-context";
 
 const Tentangkami = () => {
+  const { t } = useLanguage();
+
   return (
     <section
       id="tentang"
@@ -47,10 +50,10 @@ const Tentangkami = () => {
               viewport={{ once: true }}
             >
               <span className="text-primary font-bold tracking-[0.2em] uppercase text-sm mb-4 block font-heading">
-                Mengenal Lebih Dekat
+                {t("about.subtitle")}
               </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1] mb-8 ">
-                Kami menyediakan Teknik <span className="text-primary">&</span> Analisis Big Data & Solusi Data.
+                {t("about.title1")} <span className="text-primary">&</span> {t("about.title2")}
               </h2>
             </motion.div>
 
@@ -62,7 +65,7 @@ const Tentangkami = () => {
               className="space-y-6 text-muted-foreground text-lg leading-relaxed"
             >
               <p>
-                <span className="font-bold text-foreground">UPTTIK</span> adalah unit kerja yang bertugas memberikan layanan dan pengelolaan di bidang teknologi informasi, komunikasi, dan telekomunikasi pada suatu instansi, seperti sekolah, kampus, atau lembaga pemerintahan.
+                {t("about.description")}
               </p>
             </motion.div>
 
@@ -75,7 +78,7 @@ const Tentangkami = () => {
             >
               <Button asChild size="xl" className="rounded-tr-[2rem] rounded-bl-[2rem] rounded-tl-lg rounded-br-lg group shadow-lg shadow-primary/25 px-10 transition-all duration-500 hover:rounded-2xl font-semibold">
                 <Link href="/profil" className="flex items-center">
-                  Selengkapnya
+                  {t("about.readMore")}
                   <motion.span
                     animate={{ x: [0, 5, 0] }}
                     transition={{ repeat: Infinity, duration: 1.5 }}

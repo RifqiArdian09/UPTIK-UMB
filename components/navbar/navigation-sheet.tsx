@@ -10,17 +10,33 @@ import { useActiveSection } from "@/hooks/use-active-section";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { id: "beranda", name: "Beranda", icon: Home, href: "/#beranda" },
-  { id: "tentang", name: "Tentang Kami", icon: Info, href: "/#tentang" },
-  { id: "layanan", name: "Layanan", icon: Cpu, href: "/#layanan" },
-  { id: "testimonials", name: "Testimoni", icon: MessageSquareQuote, href: "/#testimonials" },
-  { id: "footer", name: "Kontak", icon: Send, href: "/#footer" },
-];
+import { useLanguage } from "@/context/language-context";
 
 export const NavigationSheet = () => {
   const pathname = usePathname();
+  const { t } = useLanguage();
+
+  const navItems = [
+    { id: "beranda", name: t("navbar.home"), icon: Home, href: "/#beranda" },
+    { id: "tentang", name: t("navbar.about"), icon: Info, href: "/#tentang" },
+    { id: "layanan", name: t("navbar.services"), icon: Cpu, href: "/#layanan" },
+    { id: "testimonials", name: t("navbar.testimonials"), icon: MessageSquareQuote, href: "/#testimonials" },
+    { id: "footer", name: t("navbar.contact"), icon: Send, href: "/#footer" },
+  ];
+
   const activeSection = useActiveSection(navItems.map((item) => item.id));
+
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#")) {
+      const id = href.replace("/#", "");
+      const element = document.getElementById(id);
+      if (element && pathname === "/") {
+        e.preventDefault();
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -51,7 +67,7 @@ export const NavigationSheet = () => {
             <SheetClose asChild>
               <Button variant="ghost" size="icon" className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full hover:bg-primary/10 hover:text-primary transition-colors">
                 <X className="h-5 w-5" />
-                <span className="sr-only">Tutup Menu</span>
+                <span className="sr-only">{t("navbar.close")}</span>
               </Button>
             </SheetClose>
             <SheetDescription className="sr-only">
@@ -61,7 +77,7 @@ export const NavigationSheet = () => {
 
           <div className="flex-1 overflow-y-auto px-6 py-4">
             <div className="mt-4 mb-6">
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/50 mb-6 px-2">Menu Utama</h4>
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/50 mb-6 px-2">{t("navbar.mainMenu")}</h4>
               <nav className="flex flex-col gap-3">
                 {navItems.map((item, idx) => {
                   const isActive = activeSection === "footer" && item.id === "footer"
@@ -79,6 +95,7 @@ export const NavigationSheet = () => {
                       <SheetClose asChild>
                         <Link
                           href={item.href}
+                          onClick={(e) => handleScroll(e, item.href)}
                           className={cn(
                             "group flex items-center justify-between p-3.5 rounded-tr-2xl rounded-bl-2xl rounded-tl-md rounded-br-md border transition-all duration-500",
                             isActive
@@ -125,7 +142,7 @@ export const NavigationSheet = () => {
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 rounded-tl-full blur-3xl opacity-50 -z-10"></div>
 
             <div className="flex flex-col gap-6">
-              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">Hubungi Kami</h4>
+              <h4 className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary/60">{t("navbar.contactUs")}</h4>
               <div className="space-y-4">
                 <div className="flex items-center gap-4 text-xs text-muted-foreground hover:text-primary transition-colors group cursor-default">
                   <div className="w-9 h-9 flex items-center justify-center rounded-xl bg-background border border-primary/10 group-hover:border-primary/30 transition-colors shadow-sm">

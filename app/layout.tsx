@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { GeistSans } from "geist/font/sans";
 import { Plus_Jakarta_Sans } from "next/font/google";
+import { LanguageProvider } from "@/context/language-context";
 import "./globals.css";
 
 const geist = GeistSans;
@@ -14,8 +15,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Unit Pelayanan Teknik Informatika dan Komunikasi - UM Bengkulu",
-  description: "Unit Pelayanan Teknik Informatika dan Komunikasi (UPTTIK) merupakan unit kerja strategis di Universitas Muhammadiyah Bengkulu yang bertanggung jawab penuh atas tata kelola digital kampus.",
+  title: "UPTTIK - UM Bengkulu",
+  description: "Unit Pelaksana Teknis Teknologi Informasi dan Komunikasi (UPTTIK) merupakan unit kerja strategis di Universitas Muhammadiyah Bengkulu yang bertanggung jawab penuh atas tata kelola digital kampus.",
   openGraph: {
     type: "website",
     siteName: "UPTTIK",
@@ -31,12 +32,14 @@ export default function RootLayout({
   return (
     <html lang="id" suppressHydrationWarning>
       <body className={`${geist.variable} ${plusJakartaSans.variable} ${plusJakartaSans.className} antialiased bg-background text-foreground grid-bg`} suppressHydrationWarning={true}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <TooltipProvider>
-            {children}
-            <ScrollToTop />
-          </TooltipProvider>
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <TooltipProvider>
+              {children}
+              <ScrollToTop />
+            </TooltipProvider>
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -4,86 +4,51 @@ import Marquee from "@/components/ui/marquee";
 import { motion } from "motion/react";
 import { Quote, User } from "lucide-react";
 
-const testimonials = [
-  {
-    id: 1,
-    name: "Habib",
-    designation: "Business Manager",
-    company: "PT. Teknologi Indonesia",
-    testimonial:
-      "Infrastruktur jaringan yang disediakan UPT TIK sangat stabil dan reliable. Kami tidak lagi khawatir tentang gangguan koneksi saat melakukan kegiatan penting. Keamanan data kami pun terjamin!",
-  },
-  {
-    id: 2,
-    name: "Rifqi Ardian",
-    designation: "Mahasiswa",
-    company: "Universitas Muhammadiyah Bengkulu",
-    testimonial:
-      "UPT TIK selalu responsif terhadap kebutuhan kami, terutama dalam adaptasi teknologi baru. Tim dukungan teknisnya sangat cepat dan kompeten dalam menyelesaikan masalah. Pelayanan terbaik!",
-  },
-  {
-    id: 3,
-    name: "Salman Abdul Aziz",
-    designation: "Karyawan",
-    company: "Universitas Muhammadiyah Bengkulu",
-    testimonial:
-      "Layanan Analisis Big Data UPT TIK telah membantu kami mendapatkan wawasan akurat untuk pengambilan keputusan strategis kampus. Kinerja sistem informasi akademik pun kini jauh lebih efisien.",
-  },
-  {
-    id: 4,
-    name: "Ariel",
-    designation: "Mahasiswa",
-    company: "Universitas Muhammadiyah Bengkulu",
-    testimonial:
-      "Komitmen UPT TIK terhadap keandalan dan inovasi teknologi benar-benar terbukti. Sistem yang mereka bangun sangat mendukung transformasi digital di lingkungan kampus kami.",
-  },
-  {
-    id: 5,
-    name: "Rafy",
-    designation: "Mahasiswa",
-    company: "Universitas Muhammadiyah Bengkulu",
-    testimonial:
-      "Komitmen UPT TIK terhadap keandalan dan inovasi teknologi benar-benar terbukti. Sistem yang mereka bangun sangat mendukung transformasi digital di lingkungan kampus kami.",
-  },
-];
+import { useLanguage } from "@/context/language-context";
 
-const Testimonials = () => (
-  <section id="testimonials" className="relative py-24 overflow-hidden bg-background">
+const Testimonials = () => {
+  const { t } = useLanguage();
+
+  const translatedTestimonials = t("testimonials.list") as any[];
+
+  return (
+    <section id="testimonials" className="relative py-24 overflow-hidden bg-background">
 
 
-    <div className="container mx-auto px-6 mb-16 relative z-10 text-center">
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 font-heading">
-          Apa Kata <span className="text-primary italic">Mereka?</span>
-        </h2>
-        <p className="max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed">
-          Kepercayaan dan kepuasan Anda adalah prioritas utama kami. Berikut adalah pengalaman dari mereka yang telah menggunakan layanan kami.
-        </p>
-      </motion.div>
-    </div>
+      <div className="container mx-auto px-6 mb-16 relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight mb-6 font-heading">
+            {t("testimonials.title")} <span className="text-primary italic">{t("testimonials.title_italic")}</span>
+          </h2>
+          <p className="max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed">
+            {t("testimonials.description")}
+          </p>
+        </motion.div>
+      </div>
 
-    <div className="relative">
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-32 bg-linear-to-r from-background via-background/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-32 bg-linear-to-l from-background via-background/80 to-transparent z-10 pointer-events-none" />
 
-      <Marquee pauseOnHover className="[--duration:40s] py-4">
-        {testimonials.map((t) => (
-          <TestimonialCard key={t.id} {...t} />
-        ))}
-      </Marquee>
+        <Marquee pauseOnHover className="[--duration:40s] py-4">
+          {translatedTestimonials.map((t, idx) => (
+            <TestimonialCard key={idx} {...t} />
+          ))}
+        </Marquee>
 
-      <Marquee pauseOnHover reverse className="[--duration:45s] py-4">
-        {testimonials.map((t) => (
-          <TestimonialCard key={t.id} {...t} />
-        ))}
-      </Marquee>
-    </div>
-  </section>
-);
+        <Marquee pauseOnHover reverse className="[--duration:45s] py-4">
+          {translatedTestimonials.map((t, idx) => (
+            <TestimonialCard key={idx} {...t} />
+          ))}
+        </Marquee>
+      </div>
+    </section>
+  );
+};
 
 interface TestimonialProps {
   name: string;

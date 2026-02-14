@@ -9,11 +9,17 @@ import { Target, Landmark, Compass, Users2, Building2 } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+import { useLanguage } from "@/context/language-context";
+
 const ProfilePage = () => {
+    const { t, language } = useLanguage();
+
     // Force scroll to top on mount to prevent navigation jumping
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'instant' });
     }, []);
+
+    const missionImages = ["/tentanghome.jpeg", "/misi2.jpeg", "/misi3.png"];
 
     return (
         <div className="min-h-screen bg-background text-foreground grid-bg">
@@ -35,19 +41,20 @@ const ProfilePage = () => {
 
                     <div className="relative z-10 max-w-7xl mx-auto text-center px-6">
                         <motion.div
+                            key={`hero-${language}`}
                             initial={{ opacity: 0, y: -20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
                             <Badge variant="outline" className="rounded-full px-4 py-1.5 md:px-6 md:py-2 border-white/20 bg-white/10 text-white mb-4 md:mb-6 backdrop-blur-sm gap-2 text-[10px] md:text-xs">
                                 <Building2 className="h-3 w-3 md:h-4 md:w-4" />
-                                PROFIL INSTITUSI
+                                {t("profile.hero.badge")}
                             </Badge>
                             <h1 className="text-3xl md:text-6xl font-black tracking-tight mb-3 md:mb-8 text-white drop-shadow-md leading-tight">
-                                Mengenal <span className="text-white italic">UPTTIK UMB</span>
+                                {t("profile.hero.title1")} <span className="text-white italic">{t("profile.hero.title2")}</span>
                             </h1>
                             <p className="max-w-2xl mx-auto text-sm md:text-xl text-white/90 leading-relaxed font-medium drop-shadow-sm">
-                                Pusat keunggulan teknologi informasi yang berdedikasi mendukung transformasi digital di lingkungan Universitas Muhammadiyah Bengkulu.
+                                {t("profile.hero.description")}
                             </p>
                         </motion.div>
                     </div>
@@ -58,6 +65,7 @@ const ProfilePage = () => {
                     <div className="max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                             <motion.div
+                                key={`about-content-${language}`}
                                 initial={{ opacity: 0, x: -30 }}
                                 whileInView={{ opacity: 1, x: 0 }}
                                 viewport={{ once: true }}
@@ -72,7 +80,7 @@ const ProfilePage = () => {
                                 </div>
 
                                 <div className="text-center lg:text-left">
-                                    <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground font-heading uppercase italic">Tentang Kami</h2>
+                                    <h2 className="text-4xl md:text-5xl font-black tracking-tight text-foreground font-heading uppercase italic">{t("profile.about.title")}</h2>
                                 </div>
 
                                 {/* Mobile Image */}
@@ -90,10 +98,10 @@ const ProfilePage = () => {
 
                                 <div className="space-y-6 text-muted-foreground text-lg leading-relaxed text-justify font-medium">
                                     <p>
-                                        Unit Pelaksana Teknis Teknologi Informasi dan Komunikasi (UPTTIK) merupakan unit kerja strategis di Universitas Muhammadiyah Bengkulu yang bertanggung jawab penuh atas tata kelola digital kampus.
+                                        {t("profile.about.p1")}
                                     </p>
                                     <p>
-                                        Kami berkomitmen untuk menyediakan infrastruktur digital yang andal serta sistem informasi yang terintegrasi demi mewujudkan pelayanan prima bagi seluruh civitas akademika, sejalan dengan visi universitas dalam mengembangkan IPTEKS.
+                                        {t("profile.about.p2")}
                                     </p>
                                 </div>
                             </motion.div>
@@ -157,14 +165,16 @@ const ProfilePage = () => {
                         {/* Header Part */}
                         <div className="text-center mb-32">
                             <motion.span
+                                key={`vision-subtitle-${language}`}
                                 initial={{ opacity: 0, y: -10 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 className="text-primary font-bold tracking-[0.4em] uppercase text-xs mb-6 block"
                             >
-                                Identity & Purpose
+                                {t("profile.vision.subtitle")}
                             </motion.span>
                             <motion.h1
+                                key={`vision-title-${language}`}
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}
@@ -180,9 +190,9 @@ const ProfilePage = () => {
                                 }}
                                 className="text-4xl md:text-6xl font-black text-foreground leading-[1.1] tracking-tight"
                             >
-                                {"Mendefinisikan Masa Depan Digital Kampus Melalui Visi yang Terarah.".split(" ").map((word, i) => (
+                                {t("profile.vision.title").split(" ").map((word: string, i: number) => (
                                     <span key={i} className="inline-block whitespace-nowrap">
-                                        {word.split("").map((char, j) => (
+                                        {word.split("").map((char: string, j: number) => (
                                             <motion.span
                                                 key={j}
                                                 variants={{
@@ -208,8 +218,9 @@ const ProfilePage = () => {
                                     <Target className="text-primary h-10 w-10" />
                                 </div>
                             </div>
-                            <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-8">Visi Kami</h2>
+                            <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-8">{t("profile.vision.label")}</h2>
                             <motion.blockquote
+                                key={`vision-content-${language}`}
                                 initial="hidden"
                                 whileInView="visible"
                                 viewport={{ once: true }}
@@ -224,7 +235,7 @@ const ProfilePage = () => {
                                 }}
                                 className="text-3xl md:text-4xl font-medium text-foreground italic leading-snug"
                             >
-                                &quot;{"Menjadi unit pelayanan teknologi informasi yang profesional dan inovatif dalam pengembangan IPTEKS, berorientasi kewirausahaan, serta menjunjung tinggi nilai-nilai keislaman dalam setiap layanan dan kontribusi.".split("").map((char, index) => (
+                                &quot;{t("profile.vision.content").split("").map((char: string, index: number) => (
                                     <motion.span
                                         key={index}
                                         variants={{
@@ -243,129 +254,69 @@ const ProfilePage = () => {
                 {/* Misi Section */}
                 <section id="misi" className="py-32 overflow-visible bg-background relative">
                     <div className="max-w-7xl mx-auto px-8">
-                        <div className="text-center mb-24">
+                        <motion.div
+                            key={`mission-header-${language}`}
+                            initial={{ opacity: 0, y: -20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="text-center mb-24"
+                        >
                             <div className="relative mb-12 inline-flex items-center justify-center">
                                 <div className="relative w-20 h-20 bg-background border-2 border-primary/30 rounded-tr-[2.5rem] rounded-bl-[2.5rem] rounded-tl-lg rounded-br-lg flex items-center justify-center shadow-xl">
                                     <Compass className="text-primary h-10 w-10" />
                                 </div>
                             </div>
-                            <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-4 font-heading">Misi Kami</h2>
-                            <h3 className="text-3xl md:text-4xl font-extrabold text-foreground font-heading">Langkah Strategis Menuju Transformasi</h3>
-                        </div>
+                            <h2 className="text-primary font-bold tracking-widest uppercase text-sm mb-4 font-heading">{t("profile.mission.label")}</h2>
+                            <h3 className="text-3xl md:text-4xl font-extrabold text-foreground font-heading">{t("profile.mission.title")}</h3>
+                        </motion.div>
 
                         <div className="space-y-32">
-                            <motion.div
-                                initial={{ opacity: 0, y: -30, filter: "blur(5px)" }}
-                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                                className="flex flex-col md:flex-row items-center gap-12 lg:gap-24"
-                            >
-                                <div className="w-full md:w-1/2 relative group">
-                                    <div className="absolute -inset-4 bg-primary/5 rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl"></div>
-                                    <motion.div
-                                        whileHover={{ scale: 1.02 }}
-                                        transition={{ duration: 0.5, ease: "easeOut" }}
-                                    >
-                                        <Image
-                                            alt="Layanan Profesional"
-                                            className="relative rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl shadow-2xl w-full aspect-video md:h-[400px] object-cover border-2 border-primary/10"
-                                            src="/tentanghome.jpeg"
-                                            width={800}
-                                            height={400}
-                                        />
-                                    </motion.div>
-                                    <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-white/20 rounded-tr-3xl pointer-events-none"></div>
-                                    <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-white/20 rounded-bl-3xl pointer-events-none"></div>
-                                </div>
-                                <div className="w-full md:w-1/2">
-                                    <span className="text-primary font-black text-6xl opacity-20 block mb-4">01</span>
-                                    <h4 className="text-2xl font-bold text-foreground mb-6 font-heading">Layanan Profesional & Andal</h4>
-                                    <p className="text-lg text-muted-foreground leading-relaxed">
-                                        Menyediakan layanan teknologi informasi yang andal, cepat, dan profesional untuk mendukung aktivitas akademik dan administrasi universitas.
-                                    </p>
-                                    <div className="mt-8 flex items-center gap-3 text-primary font-bold">
-                                        <span className="w-8 h-px bg-primary"></span>
-                                        <span className="text-sm uppercase tracking-widest">Service Excellence</span>
+                            {(t("profile.mission.items") as any[]).map((item, idx) => (
+                                <motion.div
+                                    key={`${language}-${idx}`}
+                                    initial={{ opacity: 0, y: -30, filter: "blur(5px)" }}
+                                    whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.6, ease: "easeOut" }}
+                                    className={cn(
+                                        "flex flex-col items-center gap-12 lg:gap-24",
+                                        idx % 2 === 1 ? "md:flex-row-reverse" : "md:flex-row"
+                                    )}
+                                >
+                                    <div className="w-full md:w-1/2 relative group">
+                                        <div className={cn(
+                                            "absolute -inset-4 bg-primary/5 rounded-tl-xl rounded-br-xl",
+                                            idx % 2 === 0 ? "rounded-tr-[3rem] rounded-bl-[3rem]" : "rounded-tl-[3rem] rounded-br-[3rem]"
+                                        )}></div>
+                                        <motion.div
+                                            whileHover={{ scale: 1.02 }}
+                                            transition={{ duration: 0.5, ease: "easeOut" }}
+                                        >
+                                            <Image
+                                                alt={item.title}
+                                                className={cn(
+                                                    "relative shadow-2xl w-full aspect-video md:h-[400px] object-cover border-2 border-primary/10",
+                                                    idx % 2 === 0 ? "rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl" : "rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl"
+                                                )}
+                                                src={missionImages[idx]}
+                                                width={800}
+                                                height={400}
+                                            />
+                                        </motion.div>
                                     </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Misi 02 */}
-                            <motion.div
-                                initial={{ opacity: 0, y: -30, filter: "blur(5px)" }}
-                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                                className="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-24"
-                            >
-                                <div className="w-full md:w-1/2 relative group">
-                                    <div className="absolute -inset-4 bg-muted/50 rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl"></div>
-                                    <motion.div
-                                        whileHover={{ scale: 1.02 }}
-                                        transition={{ duration: 0.5, ease: "easeOut" }}
-                                    >
-                                        <Image
-                                            alt="Kemandirian Institusi"
-                                            className="relative rounded-tl-[3rem] rounded-br-[3rem] rounded-tr-xl rounded-bl-xl shadow-2xl w-full aspect-video md:h-[400px] object-cover border-2 border-primary/10"
-                                            src="/misi2.jpeg"
-                                            width={800}
-                                            height={400}
-                                        />
-                                    </motion.div>
-                                    <div className="absolute top-4 left-4 w-12 h-12 border-t-2 border-l-2 border-white/20 rounded-tl-3xl pointer-events-none"></div>
-                                    <div className="absolute bottom-4 right-4 w-12 h-12 border-b-2 border-r-2 border-white/20 rounded-br-3xl pointer-events-none"></div>
-                                </div>
-                                <div className="w-full md:w-1/2 text-right md:text-left">
-                                    <span className="text-primary font-black text-6xl opacity-20 block mb-4">02</span>
-                                    <h4 className="text-2xl font-bold text-foreground mb-6 font-heading">Mendukung Kemandirian Institusi</h4>
-                                    <p className="text-lg text-muted-foreground leading-relaxed">
-                                        Melalui pemanfaatan teknologi informasi yang optimal untuk mendukung kemandirian institusi.
-                                    </p>
-                                    <div className="mt-8 flex items-center justify-end md:justify-start gap-3 text-primary font-bold">
-                                        <span className="w-8 h-px bg-primary"></span>
-                                        <span className="text-sm uppercase tracking-widest">Digital Independence</span>
+                                    <div className={cn("w-full md:w-1/2", idx % 2 === 1 && "md:text-left")}>
+                                        <span className="text-primary font-black text-6xl opacity-20 block mb-4">0{idx + 1}</span>
+                                        <h4 className="text-2xl font-bold text-foreground mb-6 font-heading">{item.title}</h4>
+                                        <p className="text-lg text-muted-foreground leading-relaxed">
+                                            {item.description}
+                                        </p>
+                                        <div className={cn("mt-8 flex items-center gap-3 text-primary font-bold", idx % 2 === 1 && "justify-end md:justify-start")}>
+                                            <span className="w-8 h-px bg-primary"></span>
+                                            <span className="text-sm uppercase tracking-widest">{item.badge}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.div>
-
-                            {/* Misi 03 */}
-                            <motion.div
-                                initial={{ opacity: 0, y: -30, filter: "blur(5px)" }}
-                                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                                className="flex flex-col md:flex-row items-center gap-12 lg:gap-24"
-                            >
-                                <div className="w-full md:w-1/2 relative group">
-                                    <div className="absolute -inset-4 bg-primary/5 rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl"></div>
-                                    <motion.div
-                                        whileHover={{ scale: 1.02 }}
-                                        transition={{ duration: 0.5, ease: "easeOut" }}
-                                    >
-                                        <Image
-                                            alt="Nilai Keislaman"
-                                            className="relative rounded-tr-[3rem] rounded-bl-[3rem] rounded-tl-xl rounded-br-xl shadow-2xl w-full aspect-video md:h-[400px] object-cover border-2 border-primary/10"
-                                            src="/misi3.png"
-                                            width={800}
-                                            height={400}
-                                        />
-                                    </motion.div>
-                                    <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-white/20 rounded-tr-3xl pointer-events-none"></div>
-                                    <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-white/20 rounded-bl-3xl pointer-events-none"></div>
-                                </div>
-                                <div className="w-full md:w-1/2">
-                                    <span className="text-primary font-black text-6xl opacity-20 block mb-4">03</span>
-                                    <h4 className="text-2xl font-bold text-foreground mb-6 font-heading">Integritas & Nilai Islam</h4>
-                                    <p className="text-lg text-muted-foreground leading-relaxed">
-                                        Menanamkan nilai-nilai Islam dalam pengelolaan teknologi informasi, dengan menjunjung tinggi integritas, amanah, dan tanggung jawab sosial.
-                                    </p>
-                                    <div className="mt-8 flex items-center gap-3 text-primary font-bold">
-                                        <span className="w-8 h-px bg-primary"></span>
-                                        <span className="text-sm uppercase tracking-widest">Islamic Values</span>
-                                    </div>
-                                </div>
-                            </motion.div>
+                                </motion.div>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -392,6 +343,7 @@ const ProfilePage = () => {
                     <div className="max-w-7xl mx-auto relative z-10">
                         {/* Header */}
                         <motion.div
+                            key={`org-header-${language}`}
                             initial={{ opacity: 0, y: -20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -403,10 +355,10 @@ const ProfilePage = () => {
                                 </div>
                             </div>
                             <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tight uppercase font-heading mb-4">
-                                Struktur Organisasi
+                                {t("profile.org.title")}
                             </h2>
                             <p className="text-muted-foreground max-w-2xl mx-auto">
-                                Tim profesional yang berdedikasi dalam memberikan layanan teknologi informasi terbaik
+                                {t("profile.org.description")}
                             </p>
                         </motion.div>
 

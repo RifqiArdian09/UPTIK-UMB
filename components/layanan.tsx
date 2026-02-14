@@ -6,53 +6,14 @@ import {
   Server,
   Globe,
   Headset,
+  Cpu,
+  Sparkles,
 } from "lucide-react";
 import { motion, Variants } from "motion/react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
-const layanan = [
-  {
-    title: "Infrastruktur & Jaringan",
-    subtitle: "Jaringan Kuat, Hasil Maksimal",
-    description:
-      "Pengelolaan dan pengembangan infrastruktur jaringan kampus untuk memastikan konektivitas stabil, cepat, dan aman di seluruh lingkungan Universitas Muhammadiyah Bengkulu.",
-    icon: Cable,
-    image: "/layanan1.jpeg",
-  },
-  {
-    title: "Servis & Maintenance Perangkat",
-    subtitle: "Servis Profesional dan Terpercaya",
-    description:
-      "Penanganan perangkat keras (hardware) and perangkat lunak (software) dilakukan secara teliti dan profesional untuk menjaga performa optimal perangkat kerja civitas akademika.",
-    icon: HardDrive,
-    image: "/layanan2.png",
-  },
-  {
-    title: "Dukungan Teknis & IT Support",
-    subtitle: "Siap Siaga Menghadapi Tantangan Teknologi",
-    description:
-      "Tim UPTTIK UMB selalu siap memberikan dukungan teknis, troubleshooting, serta solusi atas berbagai kendala teknologi informasi secara cepat dan tepat.",
-    icon: Headset,
-    image: "/layanan3.jpeg",
-  },
-  {
-    title: "Konfigurasi Server & Data Center",
-    subtitle: "Pengelolaan Server dan Network Device",
-    description:
-      "Instalasi, konfigurasi, dan monitoring server maupun perangkat jaringan di data center/rack guna menjamin keamanan dan stabilitas sistem informasi kampus.",
-    icon: Server,
-    image: "/layanan4.jpeg",
-  },
-  {
-    title: "Pengembangan Website & Sistem Informasi",
-    subtitle: "Solusi Digital untuk Institusi dan Unit Kerja",
-    description:
-      "Pengembangan website resmi, sistem informasi akademik, serta aplikasi berbasis web sesuai kebutuhan fakultas, program studi, dan unit kerja di lingkungan UMB.",
-    icon: Globe,
-    image: "/layanan5.png",
-  },
-];
+import { useLanguage } from "@/context/language-context";
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -78,6 +39,17 @@ const itemVariants: Variants = {
 };
 
 const Layanan = () => {
+  const { t, language } = useLanguage();
+
+  const icons = [Cable, HardDrive, Headset, Server, Globe];
+  const images = ["/layanan1.jpeg", "/layanan2.png", "/layanan3.jpeg", "/layanan4.jpeg", "/layanan5.png"];
+
+  const translatedLayanan = (t("layanan.items") as any[]).map((item, idx) => ({
+    ...item,
+    icon: icons[idx],
+    image: images[idx],
+  }));
+
   return (
     <section
       id="layanan"
@@ -112,45 +84,52 @@ const Layanan = () => {
       <div className="relative z-10 w-full max-w-7xl mx-auto">
         <div className="flex flex-col items-center mb-20">
           <motion.div
+            key={`badge-${language}`}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-4 inline-flex items-center rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary"
+            className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3 py-1 text-sm font-medium text-primary"
           >
-            Our Services
+            <Cpu className="h-4 w-4" />
+            {t("layanan.badge")}
           </motion.div>
           <motion.h2
+            key={`title-${language}`}
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl lg:text-6xl font-black text-center tracking-tight font-heading"
+            className="text-4xl md:text-5xl lg:text-6xl font-black text-center tracking-tight font-heading flex items-center gap-3"
           >
-            Layanan Unggulan Kami
+            <Sparkles className="h-8 w-8 text-primary hidden md:block" />
+            {t("layanan.title")}
+            <Sparkles className="h-8 w-8 text-primary hidden md:block" />
           </motion.h2>
           <motion.p
+            key={`desc-${language}`}
             initial={{ opacity: 0, y: -10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="mt-6 text-center max-w-2xl text-muted-foreground text-lg md:text-xl"
           >
-            Menyediakan solusi teknologi yang andal dan inovatif untuk memajukan sistem digital di lingkungan kampus.
+            {t("layanan.description")}
           </motion.p>
         </div>
 
         {/* First Row - 3 Cards */}
         <motion.div
+          key={`grid1-${language}`}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-4"
         >
-          {layanan.slice(0, 3).map((item, idx) => {
+          {translatedLayanan.slice(0, 3).map((item, idx) => {
             const isEven = idx % 2 === 0;
             return (
               <motion.div
-                key={item.title}
+                key={idx}
                 variants={itemVariants}
                 className={cn(
                   "group relative aspect-[4/5] sm:aspect-video lg:aspect-square xl:aspect-[3/4] overflow-hidden bg-card border border-primary/5 cursor-pointer shadow-lg",
@@ -198,19 +177,20 @@ const Layanan = () => {
 
         {/* Second Row - 2 Cards Centered */}
         <motion.div
+          key={`grid2-${language}`}
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
-          {layanan.slice(3).map((item, idx) => {
+          {translatedLayanan.slice(3).map((item, idx) => {
             // idx for slice(3) starts at 0, which is index 3 in original array
             // We want it to alternate correctly with the previous row
             const isEven = (idx + 1) % 2 === 0;
             return (
               <motion.div
-                key={item.title}
+                key={idx + 3}
                 variants={itemVariants}
                 className={cn(
                   "group relative aspect-[4/5] sm:aspect-video xl:aspect-video overflow-hidden bg-card border border-primary/5 cursor-pointer shadow-lg",
