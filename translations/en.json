@@ -15,6 +15,7 @@
         "services": "Services",
         "profile": "Profile",
         "testimonials": "Testimonials",
+        "faq": "FAQ",
         "contact": "Contact",
         "close": "Close Menu",
         "mainMenu": "Main Menu",
@@ -146,5 +147,37 @@
             "title": "Organizational Structure",
             "description": "A dedicated professional team providing the best information technology services"
         }
+    },
+    "faq": {
+        "badge": "FAQ",
+        "title": "Frequently Asked ",
+        "title_italic": "Questions",
+        "description": "Find quick answers to common questions about our technology services and support.",
+        "questions": [
+            {
+                "question": "What is UPTTIK UMB?",
+                "answer": "UPTTIK (Technical Implementation Unit of Information and Communication Technology) is a work unit at the University of Muhammadiyah Bengkulu responsible for managing IT infrastructure, information systems, and technology services within the campus."
+            },
+            {
+                "question": "What services are provided by UPTTIK?",
+                "answer": "We provide various services including campus internet network management, website & academic information system development, hardware maintenance, and technical support (IT Support) for the entire academic community."
+            },
+            {
+                "question": "How to get help if there are IT issues?",
+                "answer": "You can contact us via WhatsApp through the button in the contact, or visit the UPTTIK UMB office during working hours."
+            },
+            {
+                "question": "Are UPTTIK services available for students?",
+                "answer": "Yes, the entire academic community including students, lecturers, and staff are entitled to receive technology services and support from UPTTIK for academic and administrative purposes."
+            },
+            {
+                "question": "Where is the UPTTIK UMB office located?",
+                "answer": "The UPTTIK office is located at Jl. Bali, Komplek Universitas Muhammadiyah Gedung D, Kampung Bali, Bengkulu."
+            },
+            {
+                "question": "What are UPTTIK's operational hours?",
+                "answer": "UPTTIK services are available every working day (Monday - Saturday) from 08.00 AM to 02.00 PM. For emergency assistance outside working hours, you can leave a message through our WhatsApp support."
+            }
+        ]
     }
 }

@@ -15,6 +15,7 @@
         "services": "Layanan",
         "profile": "Profil",
         "testimonials": "Testimoni",
+        "faq": "FAQ",
         "contact": "Kontak",
         "close": "Tutup Menu",
         "mainMenu": "Menu Utama",
@@ -146,5 +147,37 @@
             "title": "Struktur Organisasi",
             "description": "Tim profesional yang berdedikasi dalam memberikan layanan teknologi informasi terbaik"
         }
+    },
+    "faq": {
+        "badge": "FAQ",
+        "title": "Pertanyaan yang Sering ",
+        "title_italic": "Diajukan",
+        "description": "Temukan jawaban cepat untuk pertanyaan umum mengenai layanan dan dukungan teknologi kami.",
+        "questions": [
+            {
+                "question": "Apa itu UPTTIK UMB?",
+                "answer": "UPTTIK (Unit Pelaksana Teknis Teknologi Informasi dan Komunikasi) adalah unit kerja di Universitas Muhammadiyah Bengkulu yang bertanggung jawab atas pengelolaan infrastruktur IT, sistem informasi, dan layanan teknologi di lingkungan kampus."
+            },
+            {
+                "question": "Layanan apa saja yang disediakan oleh UPTTIK?",
+                "answer": "Kami menyediakan berbagai layanan termasuk pengelolaan jaringan internet kampus, pengembangan website & sistem informasi akademik, pemeliharaan perangkat keras, serta dukungan teknis (IT Support) bagi seluruh civitas akademika."
+            },
+            {
+                "question": "Bagaimana cara mendapatkan bantuan jika ada kendala IT?",
+                "answer": "Anda dapat menghubungi kami melalui WhatsApp melalui tombol di kontak, atau mengunjungi kantor UPTTIK UMB pada jam kerja."
+            },
+            {
+                "question": "Apakah layanan UPTTIK tersedia untuk mahasiswa?",
+                "answer": "Ya, seluruh civitas akademika termasuk mahasiswa, dosen, dan staf berhak mendapatkan layanan dan dukungan teknologi dari UPTTIK untuk kepentingan akademik dan administratif."
+            },
+            {
+                "question": "Di mana lokasi kantor UPTTIK UMB?",
+                "answer": "Kantor UPTTIK terletak di Jl. Bali, Komplek Universitas Muhammadiyah Gedung D, Kampung Bali, Bengkulu."
+            },
+            {
+                "question": "Kapan jam operasional layanan UPTTIK?",
+                "answer": "Layanan UPTTIK tersedia setiap hari kerja (Senin - Sabtu) mulai pukul 08.00 hingga 14.00 WIB. Untuk bantuan darurat di luar jam kerja, Anda dapat meninggalkan pesan melalui WhatsApp support kami."
+            }
+        ]
     }
 }

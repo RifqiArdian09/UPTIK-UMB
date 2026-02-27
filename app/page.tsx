@@ -4,6 +4,7 @@ import Tentangkami from "@/components/tentangkami";
 import Layanan from "@/components/layanan";
 import { Navbar } from "@/components/navbar";
 import Testimonials from "@/components/testimonials";
+import FAQ from "@/components/faq";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <Tentangkami />
         <Layanan />
         <Testimonials />
+        <FAQ />
         <Footer />
       </main>
     </>
